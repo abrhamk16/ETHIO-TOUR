@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETHIO TOUR | Professional Tourism Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        :root {
+            --primary: #2ba11b; 
+            --gold: #ebb22e;    
+            --red: #b40505;
+            --dark: #121212;
+            --gray: #f8f9fa;
+            --white: #ffffff;
+            --text: #333333;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --white: #1e1e1e;
+            --gray: #121212;
+            --text: #f8f9fa;
+            --nav-bg: rgba(18, 18, 18, 0.95);
+            --shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--gray); color: var(--text); scroll-behavior: smooth; line-height: 1.6; transition: var(--transition); }
+
+        /* Navigation */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.8rem 5%; background: var(--nav-bg); position: fixed; width: 100%; top: 0; z-index: 1000;
+            box-shadow: var(--shadow); backdrop-filter: blur(10px);
+        }
+        .logo { font-size: 1.3rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links { list-style: none; display: flex; gap: 15px; align-items: center; }
+        .nav-links a { 
+            text-decoration: none; color: var(--text); font-size: 0.75rem; font-weight: 600; 
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--gold); }
+        
+        .nav-actions { display: flex; gap: 10px; align-items: center; }
+        .login-btn { background: var(--primary); color: white !important; padding: 8px 18px; border-radius: 4px; cursor: pointer; border: none; font-size: 0.75rem; font-weight: 700; }
+        .icon-btn { background: none; border: none; color: var(--text); cursor: pointer; font-size: 1.1rem; transition: var(--transition); }
+        .icon-btn:hover { color: var(--gold); }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/2539394/pexels-photo-2539394.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 0 20px;
+        }
+        .hero h1 { font-size: 4rem; font-weight: 800; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero h2 { font-size: 1.5rem; font-weight: 400; margin: 10px 0 30px; letter-spacing: 2px; text-transform: uppercase; }
+        .start-btn { 
+            background: var(--primary); color: white; padding: 15px 40px; text-decoration: none; 
+            font-weight: 700; border-radius: 50px; transition: var(--transition); border: 2px solid transparent;
+        }
+        .start-btn:hover { background: transparent; border-color: white; transform: scale(1.05); }
+
+        /* Section Styling */
+        section { padding: 100px 8%; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.5rem; color: var(--primary); text-transform: uppercase; }
+        .underline { width: 100px; height: 4px; background: var(--gold); margin: 15px auto; }
+
+        /* Full Page About */
+        #about { min-height: 100vh; background: linear-gradient(rgba(43, 161, 27, 0.9), rgba(43, 161, 27, 0.9)), url('https://images.pexels.com/photos/15857476/pexels-photo-15857476.jpeg'); background-attachment: fixed; color: white; display: flex; flex-direction: column; justify-content: center; }
+        .about-text { max-width: 900px; margin: 0 auto; text-align: center; font-size: 1.1rem; line-height: 2; }
+
+        /* 3x3 Rigid Grid */
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-10px); }
+        .card img { width: 100%; height: 250px; object-fit: cover; }
+        .card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .card-body h3 { margin-bottom: 10px; color: var(--primary); }
+        .card-body p { font-size: 0.9rem; margin-bottom: 20px; color: var(--text); opacity: 0.8; }
+        
+        .btn { padding: 12px; border: none; font-weight: 700; cursor: pointer; transition: var(--transition); text-transform: uppercase; font-family: inherit; }
+        .btn-visit { background: var(--gold); color: white; width: 100%; }
+        .btn-book { background: var(--primary); color: white; width: 100%; }
+
+        /* Transportation */
+        .trans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .trans-box { background: var(--white); padding: 40px; text-align: center; border-bottom: 5px solid var(--primary); box-shadow: var(--shadow); }
+        .trans-box i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+
+        /* Map Section */
+        #map-container { height: 500px; width: 100%; border-radius: 12px; box-shadow: var(--shadow); margin-top: 20px; z-index: 1; }
+
+        /* Contact Section */
+        .contact-container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; background: var(--white); padding: 50px; box-shadow: var(--shadow); }
+        .contact-info h3 { color: var(--primary); margin-bottom: 20px; }
+        .contact-info p { margin-bottom: 15px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 4px; background: var(--gray); color: var(--text); font-family: inherit; }
+
+        /* Advanced Modal */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); justify-content: center; align-items: center; }
+        .modal-content { background: var(--white); padding: 50px; width: 400px; border-radius: 12px; position: relative; }
+        .tabs { display: flex; margin-bottom: 25px; }
+        .tab { flex: 1; padding: 10px; cursor: pointer; border-bottom: 2px solid #ddd; font-weight: 700; }
+        .tab.active { border-color: var(--primary); color: var(--primary); }
+
+        /* Floating Scroll Top */
+        #scrollTop {
+            position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white;
+            width: 50px; height: 50px; border-radius: 50%; display: none; justify-content: center;
+            align-items: center; cursor: pointer; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        footer { background: var(--dark); color: white; padding: 50px 8%; text-align: center; }
+        .socials { font-size: 1.5rem; gap: 20px; display: flex; justify-content: center; margin-bottom: 20px; }
+        .socials i:hover { color: var(--gold); cursor: pointer; }
+
+        @media (max-width: 968px) { .grid, .trans-grid, .contact-container { grid-template-columns: 1fr; } .hero h1 { font-size: 2.5rem; } }
+    </style>
+</head>
+<body>
+
+    <div id="scrollTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
+
+    <nav>
+        <div class="logo">ETHIO TOUR</div>
+        <ul class="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#destination">DESTINATION</a></li>
+            <li><a href="#transport">TRANSPORT</a></li>
+            <li><a href="#hotel">HOTEL</a></li>
+            <li><a href="#map">MAP</a></li>
+            <li><a href="#event">EVENT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="icon-btn" onclick="toggleTheme()" title="Dark Mode"><i class="fas fa-moon"></i></button>
+            <button class="icon-btn" onclick="alert('Language: EN / AM / FR')" title="Language"><i class="fas fa-globe"></i></button>
+            <button onclick="toggleModal('loginModal')" class="login-btn">LOGIN</button>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <h1>ETHIO TOUR WELCOME TO ETHIOPIA</h1>
+        <h2>DISCOVER THE LAND OF ORIGIN ETHIOPIA</h2>
+        <a href="#destination" class="start-btn">START JOURNEY</a>
+    </header>
+
+    <section id="about">
+        <div class="section-title"><h2 style="color:white">About Ethiopia & Ethio Tour</h2><div class="underline"></div></div>
+        <div class="about-text">
+            <p>Ethiopia is a land of wonder, holding the secrets of human origins and a history that stretches back millennia. From the rock-hewn churches of Lalibela to the peaks of the Simien Mountains, it is the only African nation to remain uncolonized, preserving a unique cultural identity.</p>
+            <br>
+            <p><b>ETHIO TOUR</b> is your professional gateway to this majestic land. We provide seamless end-to-end travel experiences, high-end hospitality, and expert-guided tours. Whether you are exploring ancient stelae in Aksum or the volcanic landscapes of Danakil, we ensure your journey is functional, unique, and unforgettable.</p>
+        </div>
+    </section>
+
+    <section id="destination">
+        <div class="section-title"><h2>12 Must-Visit Destinations</h2><div class="underline"></div></div>
+        <div class="grid" id="dest-grid">
+            <div class="card"><img src="https://images.pexels.com/photos/15857467/pexels-photo-15857467.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Lalibela</h3><p>The 11 monolithic rock-hewn churches, a UNESCO wonder.</p><button class="btn btn-visit">EXPLORE</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/2539394/pexels-photo-2539394.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Simien Mountains</h3><p>Jagged peaks and home to the Gelada baboon.</p><button class="btn btn-visit">EXPLORE</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/15101034/pexels-photo-15101034.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Aksum</h3><p>Ancient obelisks and the resting place of the Ark.</p><button class="btn btn-visit">EXPLORE</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/14352136/pexels-photo-14352136.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Danakil Depression</h3><p>The hottest and lowest place on Earth.</p><button class="btn btn-visit">EXPLORE</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/28932463/pexels-photo-28932463.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Blue Nile Falls</h3><p>The magnificent 'Tis Abay' near Bahir Dar.</p><button class="btn btn-visit">EXPLORE</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/16382020/pexels-photo-16382020.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Omo Valley</h3><p>A hub of diverse and ancient tribal cultures.</p><button class="btn btn-visit">EXPLORE</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/15857476/pexels-photo-15857476.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Gondar</h3><p>The Camelot of Africa with its historic castles.</p><button class="btn btn-visit">EXPLORE</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/17395047/pexels-photo-17395047.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Harar Jugol</h3><p>A walled city with 82 mosques and rich history.</p><button class="btn btn-visit">EXPLORE</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/12693836/pexels-photo-12693836.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Bale Mountains</h3><p>Alpine scenery and the rare Ethiopian Wolf.</p><button class="btn btn-visit">EXPLORE</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/4356144/pexels-photo-4356144.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Addis Ababa</h3><p>The vibrant capital city and political heart of Africa.</p><button class="btn btn-visit">EXPLORE</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/27903960/pexels-photo-27903960.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Tiya</h3><p>Fascinating prehistoric standing stones.</p><button class="btn btn-visit">EXPLORE</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/2034335/pexels-photo-2034335.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Gheralta</h3><p>Clifftop churches with breathtaking vistas.</p><button class="btn btn-visit">EXPLORE</button></div></div>
+        </div>
+    </section>
+
+    <section id="transport" style="background: var(--gray);">
+        <div class="section-title"><h2>Transportation Services</h2><div class="underline"></div></div>
+        <div class="trans-grid">
+            <div class="trans-box"><i class="fas fa-plane"></i><h3>AIRPLANE</h3><p>Domestic flights with Ethiopian Airlines.</p><button class="btn btn-visit">SCHEDULE</button></div>
+            <div class="trans-box"><i class="fas fa-taxi"></i><h3>TAXI</h3><p>Reliable yellow taxis and airport transfers.</p><button class="btn btn-visit">CALL TAXI</button></div>
+            <div class="trans-box"><i class="fas fa-mobile-alt"></i><h3>RIDE</h3><p>Modern e-hailing app services in the city.</p><button class="btn btn-visit">BOOK RIDE</button></div>
+        </div>
+    </section>
+
+    <section id="hotel">
+        <div class="section-title"><h2>Top 10 Hotels</h2><div class="underline"></div></div>
+        <div class="grid">
+            <div class="card"><img src="https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Sheraton Addis</h3><p>Luxury at the heart of the city.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Skylight Hotel</h3><p>World-class airport convenience.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/271168/pexels-photo-271168.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Hyatt Regency</h3><p>Modern comfort on Meskel Square.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Hilton Addis</h3><p>Legendary service and thermal pools.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Radisson Blu</h3><p>Premium business and leisure stay.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Kuriftu Resort</h3><p>Bishoftu's paradise escape.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Golden Tulip</h3><p>European elegance in Bole.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/2034335/pexels-photo-2034335.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Haile Resort</h3><p>Luxury stay by Lake Awassa.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Elilly Hotel</h3><p>Modern luxury in Kasanchis.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/1838554/pexels-photo-1838554.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Marriott Executive</h3><p>Long-stay high-end suites.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+        </div>
+    </section>
+
+    <section id="map">
+        <div class="section-title"><h2>Explore Ethiopia 3D Map</h2><div class="underline"></div></div>
+        <div id="map-container"></div>
+    </section>
+
+    <section id="event">
+        <div class="section-title"><h2>Celebrities & Culture</h2><div class="underline"></div></div>
+        <div class="grid">
+            <div class="card"><img src="https://images.pexels.com/photos/15857467/pexels-photo-15857467.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Coffee Ceremony</h3><p>The cultural heart of Ethiopian social life.</p></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/2539394/pexels-photo-2539394.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Meskel Festival</h3><p>The finding of the true cross bonfire.</p></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/4356144/pexels-photo-4356144.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Modern Music</h3><p>Home of the legendary Ethio-Jazz.</p></div></div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-title"><h2>Contact Professional Support</h2><div class="underline"></div></div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>ETHIO TOUR HQ</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Bole Road, Addis Ababa, Ethiopia</p>
+                <p><i class="fas fa-phone"></i> +251 911 223 344</p>
+                <p><i class="fas fa-envelope"></i> contact@ethiotour.et</p>
+                <div class="socials" style="justify-content: flex-start; margin-top: 20px;">
+                    <i class="fab fa-facebook"></i> <i class="fab fa-instagram"></i> <i class="fab fa-twitter"></i>
+                </div>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Request Sent!')">
+                <div class="form-group"><input type="text" placeholder="Full Name" required></div>
+                <div class="form-group"><input type="email" placeholder="Email Address" required></div>
+                <div class="form-group"><textarea rows="4" placeholder="How can we help your journey?" required></textarea></div>
+                <button type="submit" class="btn btn-book">SEND INQUIRY</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="tabs">
+                <div class="tab active" onclick="alert('Login View')">LOGIN</div>
+                <div class="tab" onclick="alert('Signup View')">SIGN UP</div>
+            </div>
+            <div class="form-group"><input type="text" placeholder="Username / Email"></div>
+            <div class="form-group"><input type="password" placeholder="Password"></div>
+            <button class="btn btn-book" onclick="toggleModal('loginModal')">ENTER</button>
+            <p onclick="toggleModal('loginModal')" style="cursor:pointer; text-align:center; margin-top:15px; font-weight:700;">CLOSE</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="socials"><i class="fab fa-facebook"></i><i class="fab fa-instagram"></i><i class="fab fa-youtube"></i></div>
+        <p>&copy; 2026 ETHIO TOUR | The Land of Origin</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Real Map Initialization
+        const map = L.map('map-container').setView([9.145, 40.4896], 6);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        L.marker([9.03, 38.74]).addTo(map).bindPopup('<b>Addis Ababa</b><br>Capital City').openPopup();
+
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const body = document.documentElement;
+            const current = body.getAttribute('data-theme');
+            body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+            const icon = document.querySelector('.icon-btn i');
+            icon.className = current === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+
+        // Scroll Logic
+        window.onscroll = function() {
+            let s = document.getElementById("scrollTop");
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                s.style.display = "flex";
+            } else { s.style.display = "none"; }
+        };
+
+        function toggleModal(id) {
+            const m = document.getElementById(id);
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+    </script>
+</body>
+</html>

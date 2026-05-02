@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETHIO TOUR | Professional Tourism Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        :root {
+            --primary: #2ba11b; 
+            --gold: #ebb22e;    
+            --red: #b40505;
+            --dark: #121212;
+            --gray: #f8f9fa;
+            --white: #ffffff;
+            --text: #333333;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        [data-theme="dark"] {
+            --white: #1e1e1e;
+            --gray: #121212;
+            --text: #f8f9fa;
+            --nav-bg: rgba(18, 18, 18, 0.95);
+            --shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--gray); color: var(--text); scroll-behavior: smooth; line-height: 1.6; transition: var(--transition); }
+
+        /* Navigation */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.8rem 5%; background: var(--nav-bg); position: fixed; width: 100%; top: 0; z-index: 1000;
+            box-shadow: var(--shadow); backdrop-filter: blur(10px);
+        }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
+        .nav-links { list-style: none; display: flex; gap: 20px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-size: 0.8rem; font-weight: 600; transition: var(--transition); }
+        .nav-links a:hover { color: var(--gold); }
+        
+        .nav-actions { display: flex; gap: 15px; align-items: center; position: relative; }
+        .login-btn { background: var(--primary); color: white !important; padding: 10px 22px; border-radius: 4px; cursor: pointer; border: none; font-size: 0.8rem; font-weight: 700; }
+        .icon-btn { background: none; border: none; color: var(--text); cursor: pointer; font-size: 1.2rem; transition: var(--transition); }
+
+        .lang-dropdown {
+            position: absolute; top: 100%; right: 0; background: var(--white); 
+            box-shadow: var(--shadow); border-radius: 4px; display: none; flex-direction: column; 
+            min-width: 180px; padding: 10px 0; z-index: 1001;
+        }
+        .lang-dropdown div { padding: 10px 20px; font-size: 0.85rem; cursor: pointer; color: var(--text); border-bottom: 1px solid #eee; }
+        .lang-dropdown div:hover { background: var(--primary); color: white; }
+
+        /* Hero */
+        .hero {
+            height: 75vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/2539394/pexels-photo-2539394.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 0 20px;
+        }
+        .hero h1 { font-size: 4rem; font-weight: 800; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.2rem; margin-top: 10px; font-weight: 300; letter-spacing: 2px; }
+
+        section { padding: 80px 8%; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.2rem; color: var(--primary); text-transform: uppercase; }
+        .underline { width: 80px; height: 5px; background: var(--gold); margin: 10px auto; }
+
+        /* Grids */
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .card { background: var(--white); border-radius: 0px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); display: flex; flex-direction: column; border: 1px solid #eee; }
+        .card:hover { transform: translateY(-10px); }
+        .card img { width: 100%; height: 220px; object-fit: cover; }
+        .card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        
+        .btn { padding: 12px; border: none; font-weight: 700; cursor: pointer; transition: var(--transition); text-transform: uppercase; text-decoration: none; text-align: center; display: block; margin-top: auto; letter-spacing: 1px; font-size: 0.8rem; }
+        .btn-visit { background: var(--gold); color: white; }
+        .btn-book { background: var(--primary); color: white; }
+
+        /* DETAILED HISTORY & CULTURE SECTION */
+        .culture-container { display: flex; flex-direction: column; gap: 40px; }
+        .history-main { background: var(--primary); color: white; padding: 50px; border-radius: 4px; box-shadow: var(--shadow); }
+        .history-main h3 { color: var(--gold); font-size: 1.8rem; margin-bottom: 20px; border-bottom: 2px solid var(--gold); display: inline-block; }
+        .history-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        .history-item p { margin-bottom: 15px; font-size: 0.95rem; opacity: 0.9; }
+
+        .culture-highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .culture-card { background: var(--white); padding: 30px; border-top: 5px solid var(--gold); box-shadow: var(--shadow); text-align: center; }
+        .culture-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
+        .culture-card h4 { margin-bottom: 10px; color: var(--primary); }
+
+        /* MAP */
+        #map-container { height: 500px; width: 100%; border: 10px solid var(--white); box-shadow: var(--shadow); z-index: 1; }
+
+        /* CONTACT SECTION (Restored & Optimized) */
+        .contact-container { 
+            display: grid; 
+            grid-template-columns: 1fr 1.5fr; 
+            gap: 40px; 
+            background: var(--white); 
+            padding: 50px; 
+            border: 1px solid #ddd; 
+            box-shadow: var(--shadow); 
+        }
+        .contact-info { display: flex; flex-direction: column; gap: 20px; }
+        .contact-info h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 10px; }
+        .contact-info p { display: flex; align-items: center; gap: 15px; font-size: 1rem; }
+        .contact-info i { color: var(--primary); font-size: 1.2rem; width: 25px; }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group input, .form-group textarea { 
+            width: 100%; padding: 15px; border: 1px solid #ccc; outline: none; 
+            font-family: inherit; background: var(--gray); color: var(--text);
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); }
+
+        #scrollTop { position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; width: 50px; height: 50px; border-radius: 50%; display: none; justify-content: center; align-items: center; cursor: pointer; z-index: 1000; }
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); justify-content: center; align-items: center; }
+        .modal-content { background: var(--white); padding: 40px; width: 350px; border-radius: 8px; text-align: center; }
+
+        footer { background: var(--dark); color: white; padding: 40px; text-align: center; font-size: 0.85rem; letter-spacing: 1px; }
+
+        @media (max-width: 1024px) { .grid, .history-grid, .culture-highlights, .contact-container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body onclick="closeDropdowns(event)">
+
+    <div id="scrollTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
+
+    <nav>
+        <div class="logo">ETHIO TOUR</div>
+        <ul class="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#destination">DESTINATIONS</a></li>
+            <li><a href="#hotel">HOTELS</a></li>
+            <li><a href="#culture">CULTURE & HISTORY</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="icon-btn" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+            <div style="position:relative">
+                <button class="icon-btn" onclick="event.stopPropagation(); toggleLang()"><i class="fas fa-globe"></i></button>
+                <div id="langDrop" class="lang-dropdown">
+                    <div onclick="setLang('EN')">English</div>
+                    <div onclick="setLang('AM')">Amharic (አማርኛ)</div>
+                    <div onclick="setLang('FR')">French (Français)</div>
+                    <div onclick="setLang('AR')">Arabic (العربية)</div>
+                </div>
+            </div>
+            <button onclick="toggleModal('loginModal')" class="login-btn">LOGIN</button>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <h1 id="welcomeText">ETHIOPIA</h1>
+        <p>THE LAND OF ORIGINS & 13 MONTHS OF SUNSHINE</p>
+    </header>
+
+    <section id="destination">
+        <div class="section-title"><h2>Top 9 Destinations</h2><div class="underline"></div></div>
+        <div class="grid">
+            <div class="card"><img src="https://images.pexels.com/photos/15857467/pexels-photo-15857467.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Lalibela</h3><p>The 12th-century New Jerusalem carved from solid rock.</p><a href="https://en.wikipedia.org/wiki/Lalibela" target="_blank" class="btn btn-visit">EXPLORE</a></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/2539394/pexels-photo-2539394.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Simien Mountains</h3><p>Stunning peaks and the home of the Walia Ibex.</p><a href="https://simienmountains.org" target="_blank" class="btn btn-visit">EXPLORE</a></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/15101034/pexels-photo-15101034.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Aksum</h3><p>The center of one of the world's ancient four empires.</p><a href="https://en.wikipedia.org/wiki/Axum" target="_blank" class="btn btn-visit">EXPLORE</a></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/14352136/pexels-photo-14352136.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Danakil</h3><p>Yellow sulfur springs and bubbling lava lakes.</p><a href="https://en.wikipedia.org/wiki/Danakil_Depression" target="_blank" class="btn btn-visit">EXPLORE</a></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/28932463/pexels-photo-28932463.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Blue Nile Falls</h3><p>Known as 'Tis Abay', the Smoke of the Nile.</p><a href="https://en.wikipedia.org/wiki/Blue_Nile_Falls" target="_blank" class="btn btn-visit">EXPLORE</a></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/16382020/pexels-photo-16382020.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Omo Valley</h3><p>A living museum of diverse ethnic tribes.</p><a href="https://en.wikipedia.org/wiki/Omo_River" target="_blank" class="btn btn-visit">EXPLORE</a></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/15857476/pexels-photo-15857476.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Gondar</h3><p>Medieval castles and the Royal Enclosure.</p><a href="https://en.wikipedia.org/wiki/Gondar" target="_blank" class="btn btn-visit">EXPLORE</a></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/17395047/pexels-photo-17395047.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Harar</h3><p>The 4th holiest city of Islam and ancient walls.</p><a href="https://en.wikipedia.org/wiki/Harar" target="_blank" class="btn btn-visit">EXPLORE</a></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/12693836/pexels-photo-12693836.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Bale Mountains</h3><p>Afro-alpine plateaus and endemic wolves.</p><a href="https://en.wikipedia.org/wiki/Bale_Mountains_National_Park" target="_blank" class="btn btn-visit">EXPLORE</a></div></div>
+        </div>
+    </section>
+
+    <section id="culture" style="background: #ececec;">
+        <div class="section-title"><h2>History & Culture</h2><div class="underline"></div></div>
+        <div class="culture-container">
+            <div class="history-main">
+                <h3>A Timeline of Sovereignty</h3>
+                <div class="history-grid">
+                    <div class="history-item">
+                        <p><b>Ancient Foundations:</b> Ethiopia is home to the earliest ancestors of humanity (Lucy). The D'mt and Aksumite Empires (100-940 AD) were global superpowers, trading with Rome, Persia, and China. Aksum was the first major empire to adopt Christianity.</p>
+                        <p><b>The Solomonic Dynasty:</b> According to the Kebra Nagast, the royal line traces back to King Solomon and the Queen of Sheba. This lineage remained virtually unbroken until 1974.</p>
+                    </div>
+                    <div class="history-item">
+                        <p><b>The Battle of Adwa (1896):</b> Ethiopia is the only African nation never colonized. Emperor Menelik II and Empress Taytu Betul led a united army to defeat a colonial power, making Ethiopia a global symbol of Pan-Africanism and freedom.</p>
+                        <p><b>Modern Legacy:</b> Emperor Haile Selassie I founded the Organization of African Unity (now the African Union). Today, Addis Ababa serves as the "Diplomatic Capital of Africa."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="culture-highlights">
+                <div class="culture-card"><i class="fas fa-mug-hot"></i><h4>Coffee Birthplace</h4><p>The "Coffee Ceremony" is a social ritual. Arabica coffee was first discovered in the Kaffa region of Ethiopia.</p></div>
+                <div class="culture-card"><i class="fas fa-calendar-alt"></i><h4>13 Months</h4><p>We follow the Coptic calendar—7 years behind the Gregorian. Experience 13 months of sunshine!</p></div>
+                <div class="culture-card"><i class="fas fa-language"></i><h4>Unique Script</h4><p>Ethiopia is the only African nation with its own indigenous writing system, the Ge'ez script (fidel).</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hotel">
+        <div class="section-title"><h2>Luxury Accommodations</h2><div class="underline"></div></div>
+        <div class="grid">
+            <div class="card"><img src="https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Sheraton Addis</h3><p>Addis Ababa's crown jewel luxury resort.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Skylight Hotel</h3><p>State-of-the-art hotel near the airport.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/271168/pexels-photo-271168.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Hyatt Regency</h3><p>Modern luxury in the heart of the city.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Hilton Addis</h3><p>Classical architecture and mineral pools.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Radisson Blu</h3><p>Sophisticated business stay.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Kuriftu Resort</h3><p>Lakeside serenity in Bishoftu.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Golden Tulip</h3><p>International standard hospitality.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/2034335/pexels-photo-2034335.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Haile Resort</h3><p>Luxury inspired by legendary runner Haile G.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+            <div class="card"><img src="https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&w=400"><div class="card-body"><h3>Elilly Hotel</h3><p>Upscale stay with city-wide views.</p><button class="btn btn-book">BOOK NOW</button></div></div>
+        </div>
+    </section>
+
+    <section id="map-sec">
+        <div class="section-title"><h2>Interactive Travel Map</h2><div class="underline"></div></div>
+        <div id="map-container"></div>
+    </section>
+
+    <section id="contact">
+        <div class="section-title"><h2>Contact Us</h2><div class="underline"></div></div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get Details</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                <p><i class="fas fa-phone"></i> +251 911 22 33 44</p>
+                <p><i class="fas fa-envelope"></i> contact@ethiotour.et</p>
+                <p><i class="fas fa-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Message Received!')">
+                <div class="form-group"><input type="text" placeholder="Full Name" required></div>
+                <div class="form-group"><input type="email" placeholder="Email Address" required></div>
+                <div class="form-group"><textarea rows="4" placeholder="How can we help your journey?" required></textarea></div>
+                <button type="submit" class="btn btn-book">SEND MESSAGE</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2 style="color:var(--primary)">LOGIN</h2>
+            <div class="form-group"><input style="margin-top:20px" type="text" placeholder="Username"></div>
+            <div class="form-group"><input type="password" placeholder="Password"></div>
+            <button class="btn btn-book" onclick="toggleModal('loginModal')">ENTER</button>
+            <p onclick="toggleModal('loginModal')" style="cursor:pointer; margin-top:15px; font-size:0.8rem;">BACK</p>
+        </div>
+    </div>
+
+    <footer><p>&copy; 2026 ETHIO TOUR | The Land of Origins</p></footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Map Logic
+        const map = L.map('map-container').setView([9.145, 40.4896], 6);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        const places = [
+            { n: "Lalibela", c: [12.0319, 39.0412] },
+            { n: "Simien Mountains", c: [13.2327, 38.3756] },
+            { n: "Aksum", c: [14.1243, 38.7244] },
+            { n: "Danakil", c: [14.241, 40.3] },
+            { n: "Addis Ababa", c: [9.03, 38.74] }
+        ];
+        places.forEach(p => L.marker(p.c).addTo(map).bindPopup(p.n));
+
+        // UI Logic
+        function toggleTheme() {
+            const b = document.documentElement;
+            b.setAttribute('data-theme', b.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        }
+
+        function toggleLang() {
+            const d = document.getElementById('langDrop');
+            d.style.display = d.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function setLang(code) {
+            const texts = { 'EN': 'ETHIOPIA', 'AM': 'ኢትዮጵያ', 'FR': 'ÉTHIOPIE', 'AR': 'إثيوبيا' };
+            document.getElementById('welcomeText').innerText = texts[code];
+            document.getElementById('langDrop').style.display = 'none';
+        }
+
+        function toggleModal(id) {
+            const m = document.getElementById(id);
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        window.onscroll = function() {
+            document.getElementById("scrollTop").style.display = (window.scrollY > 400) ? "flex" : "none";
+        };
+
+        function closeDropdowns(e) {
+            if(!e.target.closest('.nav-actions')) document.getElementById('langDrop').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

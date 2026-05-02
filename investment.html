@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investment Opportunities – Ethio Tour</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Josefin+Sans:wght@300;400;600&family=Cormorant+Garamond:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--gold:#C9973A;--green:#1A5C38;--dark:#0a1f12;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Cormorant Garamond',serif;background:#FDFAF4;min-height:100vh;}
+.inv-header{background:linear-gradient(135deg,#0a1f12,#1A2A1A);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;}
+.inv-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.12em;color:var(--gold);text-decoration:none;}
+.inv-logo span{color:#fff;}
+.inv-header a.back{font-family:'Josefin Sans',sans-serif;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:#aaa;text-decoration:none;display:flex;align-items:center;gap:0.4rem;transition:color 0.2s;}
+.inv-header a.back:hover{color:var(--gold);}
+.inv-hero{background:linear-gradient(135deg,#0a1f12 0%,#1a3020 50%,#0d1a0d 100%);padding:4rem 2rem;text-align:center;position:relative;overflow:hidden;}
+.inv-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9973A' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");}
+.inv-hero-badge{display:inline-block;font-family:'Josefin Sans',sans-serif;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(201,151,58,0.15);border:1px solid rgba(201,151,58,0.4);color:var(--gold);padding:0.4rem 1.2rem;border-radius:20px;margin-bottom:1.2rem;}
+.inv-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);color:#F5EDD6;line-height:1.1;margin-bottom:1rem;}
+.inv-hero h1 em{color:var(--gold);font-style:normal;}
+.inv-hero p{font-family:'Josefin Sans',sans-serif;font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,237,214,0.6);max-width:600px;margin:0 auto;}
+.flag-strip{height:5px;display:flex;}
+.flag-strip span{flex:1;}
+.flag-strip span:nth-child(1){background:#1A5C38;}
+.flag-strip span:nth-child(2){background:#C9973A;}
+.flag-strip span:nth-child(3){background:#8B1A1A;}
+/* OPPORTUNITY CARDS */
+.opp-section{padding:4rem 2rem;background:#f0f8f4;}
+.opp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;}
+.opp-card{background:#fff;border-radius:6px;padding:2rem;border-left:4px solid var(--gold);box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:transform 0.2s,box-shadow 0.2s;}
+.opp-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.12);}
+.opp-card i{font-size:2rem;color:var(--gold);margin-bottom:1rem;display:block;}
+.opp-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:0.5rem;}
+.opp-card p{font-size:0.95rem;line-height:1.7;color:#666;}
+.opp-card .roi{display:inline-block;margin-top:0.8rem;font-family:'Josefin Sans',sans-serif;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(26,92,56,0.1);color:var(--green);padding:0.25rem 0.6rem;border-radius:2px;}
+.section-label{text-align:center;margin-bottom:2.5rem;}
+.section-label span{font-family:'Josefin Sans',sans-serif;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);}
+.section-label h2{font-family:'Playfair Display',serif;font-size:2rem;margin-top:0.5rem;}
+/* FORM */
+.form-section{padding:4rem 2rem;}
+.inv-card{max-width:850px;margin:0 auto;background:#fff;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.12);border-top:4px solid var(--gold);overflow:hidden;}
+.inv-card-header{background:linear-gradient(135deg,#0a1f12,#1A2A1A);padding:2.5rem 3rem;text-align:center;}
+.inv-card-header h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:#F5EDD6;margin-bottom:0.3rem;}
+.inv-card-header p{font-family:'Josefin Sans',sans-serif;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,237,214,0.5);}
+.inv-form-body{padding:2.5rem 3rem;}
+.fs{margin-bottom:2rem;}
+.fs h3{font-family:'Josefin Sans',sans-serif;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid #f0e8d0;padding-bottom:0.5rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.5rem;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem;}
+.frow.single{grid-template-columns:1fr;}
+.fg label{display:block;font-family:'Josefin Sans',sans-serif;font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;color:#888;margin-bottom:0.3rem;}
+.fg input,.fg select,.fg textarea{width:100%;background:#FDFAF4;border:1px solid #ddd;border-radius:3px;padding:0.75rem 1rem;color:#1a1a1a;font-family:'Cormorant Garamond',serif;font-size:1rem;outline:none;transition:border-color 0.2s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);}
+.fg textarea{min-height:100px;resize:vertical;}
+.invest-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:0.7rem;}
+.invest-opt{border:1px solid #ddd;border-radius:4px;padding:0.8rem;text-align:center;cursor:pointer;transition:all 0.2s;}
+.invest-opt:hover,.invest-opt.selected{border-color:var(--gold);background:#fff9ef;}
+.invest-opt strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--green);}
+.invest-opt span{font-family:'Josefin Sans',sans-serif;font-size:0.62rem;letter-spacing:0.06em;text-transform:uppercase;color:#888;}
+.terms-box{background:#f9f6ee;border:1px solid #e8e0cc;border-radius:4px;padding:1rem 1.2rem;font-size:0.9rem;line-height:1.7;color:#666;margin-bottom:1.2rem;}
+.submit-btn{width:100%;background:var(--green);color:#fff;border:none;font-family:'Josefin Sans',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:1.1rem 2rem;border-radius:3px;cursor:pointer;transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:0.7rem;}
+.submit-btn:hover{background:#2A7A4E;transform:translateY(-2px);box-shadow:0 8px 25px rgba(26,92,56,0.35);}
+/* SUCCESS */
+.success-screen{display:none;padding:4rem 3rem;text-align:center;}
+.success-screen.show{display:block;}
+.success-icon{width:90px;height:90px;background:linear-gradient(135deg,var(--gold),#E8C06A);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2.5rem;color:#000;box-shadow:0 8px 30px rgba(201,151,58,0.3);}
+.success-screen h2{font-family:'Playfair Display',serif;font-size:2rem;color:var(--green);margin-bottom:0.5rem;}
+.success-screen p{font-size:1.05rem;color:#555;line-height:1.7;max-width:420px;margin:0 auto 1.5rem;}
+.inv-ref{display:inline-block;background:#f0faf5;border:2px solid var(--gold);border-radius:4px;padding:0.8rem 2rem;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.15em;color:var(--gold);}
+footer{background:#000;color:#555;padding:2rem;text-align:center;font-family:'Josefin Sans',sans-serif;font-size:0.72rem;letter-spacing:0.08em;}
+footer a{color:var(--gold);text-decoration:none;}
+@media(max-width:650px){.frow{grid-template-columns:1fr;}.invest-opts{grid-template-columns:1fr 1fr;}.inv-form-body{padding:1.5rem;}}
+</style>
+</head>
+<body>
+
+<div class="inv-header">
+  <a href="ethiotour.html" class="inv-logo">ETHIO<span> TOUR</span></a>
+  <a href="ethiotour.html" class="back"><i class="fa fa-arrow-left"></i> Back to Website</a>
+</div>
+
+<div class="inv-hero">
+  <div class="inv-hero-badge">Investment Opportunities 2024–2030</div>
+  <h1>Invest in <em>Ethiopia's</em><br>Tourism Future</h1>
+  <p>Partner with Ethio Tour to build sustainable, profitable, and impactful tourism enterprises</p>
+</div>
+<div class="flag-strip"><span></span><span></span><span></span></div>
+
+<!-- OPPORTUNITIES -->
+<div class="opp-section">
+  <div class="section-label">
+    <span>Why Invest in Ethiopia</span>
+    <h2>Investment Sectors</h2>
+  </div>
+  <div class="opp-grid">
+    <div class="opp-card">
+      <i class="fa fa-hotel"></i>
+      <h3>Eco-Lodge Development</h3>
+      <p>Build and operate sustainable eco-lodges in Ethiopia's national parks and UNESCO sites. High demand with low supply creates significant return potential.</p>
+      <span class="roi">Projected ROI: 18–25% p.a.</span>
+    </div>
+    <div class="opp-card">
+      <i class="fa fa-compass"></i>
+      <h3>Tour Operations</h3>
+      <p>Franchise or co-invest in regional tour operations across the Historical Route, Omo Valley, and Danakil expedition circuits.</p>
+      <span class="roi">Projected ROI: 22–30% p.a.</span>
+    </div>
+    <div class="opp-card">
+      <i class="fa fa-utensils"></i>
+      <h3>Heritage Restaurants</h3>
+      <p>Cultural dining experiences serving traditional Ethiopian cuisine in authentic settings in Addis Ababa, Lalibela, and Gondar.</p>
+      <span class="roi">Projected ROI: 15–20% p.a.</span>
+    </div>
+    <div class="opp-card">
+      <i class="fa fa-plane"></i>
+      <h3>Aviation & Charter</h3>
+      <p>Light aircraft and helicopter charter services for tourists accessing remote destinations like Erta Ale and Omo Valley landing strips.</p>
+      <span class="roi">Projected ROI: 25–35% p.a.</span>
+    </div>
+    <div class="opp-card">
+      <i class="fa fa-mobile-alt"></i>
+      <h3>Digital Tourism Tech</h3>
+      <p>Invest in Ethiopia's growing tourism technology sector — booking platforms, AR heritage experiences, and travel fintech solutions.</p>
+      <span class="roi">Projected ROI: 30–50% p.a.</span>
+    </div>
+    <div class="opp-card">
+      <i class="fa fa-leaf"></i>
+      <h3>Coffee Tourism</h3>
+      <p>Ethiopia is the birthplace of coffee. Farm tours, specialty processing centers, and export partnerships in Yirgacheffe, Sidama, and Kaffa.</p>
+      <span class="roi">Projected ROI: 20–28% p.a.</span>
+    </div>
+  </div>
+</div>
+
+<!-- INVESTMENT FORM -->
+<div class="form-section">
+  <div class="inv-card">
+    <div class="inv-card-header">
+      <h2>Investment Application Form</h2>
+      <p>Complete your investor profile to get started</p>
+    </div>
+    <div class="flag-strip"><span></span><span></span><span></span></div>
+
+    <div class="inv-form-body">
+      <!-- SUCCESS -->
+      <div class="success-screen" id="successScreen">
+        <div class="success-icon"><i class="fa fa-handshake"></i></div>
+        <h2>Investment Done!</h2>
+        <p>Thank you for your investment interest in Ethio Tour! Our investment team will contact you within 48 hours to discuss the next steps.</p>
+        <div class="inv-ref" id="invRef">REF: INV-000000</div>
+        <p style="margin-top:1rem;font-size:0.9rem;color:#888;">Please save your investment reference number</p>
+        <a href="ethiotour.html" style="display:inline-block;margin-top:1.5rem;font-family:'Josefin Sans',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(--green);color:#fff;padding:0.8rem 2rem;border-radius:3px;text-decoration:none;">Return to Ethio Tour</a>
+      </div>
+
+      <!-- FORM -->
+      <div id="invFormContent">
+        <!-- Investor Identity -->
+        <div class="fs">
+          <h3><i class="fa fa-user-tie"></i> Investor Identity</h3>
+          <div class="frow">
+            <div class="fg"><label>Full Name / Company *</label><input type="text" id="invName" placeholder="Name or company name"></div>
+            <div class="fg"><label>Investor Type *</label>
+              <select id="invType">
+                <option value="">Select type</option>
+                <option>Individual Investor</option><option>Family Office</option><option>Private Equity</option><option>Venture Capital</option><option>Corporate / Institutional</option><option>NGO / Development Fund</option>
+              </select>
+            </div>
+          </div>
+          <div class="frow">
+            <div class="fg"><label>Email Address *</label><input type="email" id="invEmail" placeholder="investor@company.com"></div>
+            <div class="fg"><label>Phone Number *</label><input type="tel" id="invPhone" placeholder="+1 234 567 8900"></div>
+          </div>
+          <div class="frow">
+            <div class="fg"><label>Country of Residence *</label><input type="text" id="invCountry" placeholder="Country"></div>
+            <div class="fg"><label>City</label><input type="text" id="invCity" placeholder="City"></div>
+          </div>
+        </div>
+
+        <!-- Investment Details -->
+        <div class="fs">
+          <h3><i class="fa fa-chart-line"></i> Investment Details</h3>
+          <div style="margin-bottom:1.2rem;">
+            <div class="fg"><label>Investment Amount (USD) *</label>
+              <select id="invAmount">
+                <option value="">Select investment range</option>
+                <option>$10,000 – $50,000</option>
+                <option>$50,000 – $100,000</option>
+                <option>$100,000 – $500,000</option>
+                <option>$500,000 – $1,000,000</option>
+                <option>$1,000,000 – $5,000,000</option>
+                <option>$5,000,000+</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-bottom:1.2rem;">
+            <div class="fg" style="margin-bottom:0.5rem;"><label>Preferred Investment Sector (Select all that apply)</label></div>
+            <div class="invest-opts" id="sectorOpts">
+              <div class="invest-opt" onclick="toggleSector(this)"><strong>🏕️</strong><span>Eco-Lodges</span></div>
+              <div class="invest-opt" onclick="toggleSector(this)"><strong>🧭</strong><span>Tour Ops</span></div>
+              <div class="invest-opt" onclick="toggleSector(this)"><strong>🍽️</strong><span>Restaurants</span></div>
+              <div class="invest-opt" onclick="toggleSector(this)"><strong>✈️</strong><span>Aviation</span></div>
+              <div class="invest-opt" onclick="toggleSector(this)"><strong>📱</strong><span>Digital Tech</span></div>
+              <div class="invest-opt" onclick="toggleSector(this)"><strong>☕</strong><span>Coffee Tourism</span></div>
+            </div>
+          </div>
+          <div class="frow">
+            <div class="fg"><label>Investment Timeline</label>
+              <select id="invTimeline">
+                <option value="">Select timeline</option>
+                <option>Short-term (1–2 years)</option><option>Medium-term (3–5 years)</option><option>Long-term (5–10 years)</option><option>Indefinite / Strategic Partnership</option>
+              </select>
+            </div>
+            <div class="fg"><label>Expected ROI</label>
+              <select id="invROI">
+                <option value="">Select expectation</option>
+                <option>10–15% annual return</option><option>15–25% annual return</option><option>25–40% annual return</option><option>40%+ annual return</option><option>Impact-focused (flexible ROI)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Profile -->
+        <div class="fs">
+          <h3><i class="fa fa-briefcase"></i> Business Profile</h3>
+          <div class="frow">
+            <div class="fg"><label>Years of Investment Experience</label>
+              <select id="invExp">
+                <option value="">Select</option>
+                <option>First-time investor</option><option>1–3 years</option><option>3–10 years</option><option>10+ years</option>
+              </select>
+            </div>
+            <div class="fg"><label>Previous Ethiopia Experience</label>
+              <select id="prevEth">
+                <option value="">Select</option>
+                <option>No previous exposure</option><option>Visited Ethiopia as tourist</option><option>Previous business in Ethiopia</option><option>Currently operating in Ethiopia</option>
+              </select>
+            </div>
+          </div>
+          <div class="frow single">
+            <div class="fg"><label>Investment Proposal / Business Idea</label>
+              <textarea id="invProposal" placeholder="Describe your investment vision, concept, or proposal for Ethiopia's tourism sector..."></textarea>
+            </div>
+          </div>
+          <div class="frow single">
+            <div class="fg"><label>How Did You Hear About Ethio Tour Investments?</label>
+              <select id="invSource">
+                <option value="">Select source</option>
+                <option>Ethiopian Embassy / Trade Office</option><option>Ethio Tour Website</option><option>Conference / Event</option><option>Word of Mouth / Referral</option><option>Social Media</option><option>News Article</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terms -->
+        <div class="terms-box">
+          <strong>Investment Disclaimer:</strong> This application does not constitute a binding investment agreement. All investment opportunities are subject to due diligence, Ethiopian Investment Commission approval, and formal legal agreements. Projected returns are estimates only and not guaranteed. Ethio Tour will contact you to discuss details within 48 business hours.
+        </div>
+        <label class="check-item" style="margin-bottom:1.5rem;display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+          <input type="checkbox" id="invAgree" style="width:16px;height:16px;accent-color:var(--gold);">
+          <span style="font-size:0.95rem;">I acknowledge the investment disclaimer and agree to the Terms & Conditions</span>
+        </label>
+
+        <button class="submit-btn" onclick="submitInvestment()">
+          <i class="fa fa-handshake"></i> Submit Investment Application
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.5rem;">ETHIO TOUR</div>
+  <p>© 2024 Ethio Tour Investment Division | <a href="ethiotour.html">Main Website</a></p>
+  <p style="margin-top:0.5rem;color:var(--gold);">Created by <strong>Abrham Kefyalew</strong></p>
+</footer>
+
+<script>
+function toggleSector(el){ el.classList.toggle('selected'); }
+function submitInvestment(){
+  const name = document.getElementById('invName').value;
+  const email = document.getElementById('invEmail').value;
+  const phone = document.getElementById('invPhone').value;
+  const amount = document.getElementById('invAmount').value;
+  const agreed = document.getElementById('invAgree').checked;
+  if(!name||!email||!phone){ alert('Please fill in all required fields (marked with *).'); return; }
+  if(!amount){ alert('Please select your investment amount range.'); return; }
+  if(!agreed){ alert('Please acknowledge the investment disclaimer.'); return; }
+  const ref = 'INV-' + Math.floor(100000 + Math.random()*900000);
+  document.getElementById('invRef').textContent = 'REF: ' + ref;
+  document.getElementById('invFormContent').style.display = 'none';
+  document.getElementById('successScreen').classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

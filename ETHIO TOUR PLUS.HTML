@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETHIO TOUR | PRO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;600;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #2ba11b; 
+            --gold: #ebb22e;
+            --bg: #ffffff;
+            --text: #0a0a0a;
+            --surface: #f5f5f5;
+            --border: #0a0a0a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg); 
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* HARD NAVIGATION */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%; border-bottom: 2px solid var(--border);
+            position: sticky; top: 0; background: var(--bg); z-index: 100;
+        }
+        .logo { font-family: 'Syncopate', sans-serif; font-weight: 700; font-size: 1.5rem; letter-spacing: -1px; }
+        .nav-right { display: flex; gap: 30px; align-items: center; }
+        .nav-right a { text-decoration: none; color: var(--text); font-weight: 900; font-size: 0.8rem; text-transform: uppercase; }
+        .btn-black { background: var(--text); color: white; padding: 12px 25px; border: none; font-weight: 900; cursor: pointer; }
+
+        /* RAW HERO */
+        .hero {
+            height: 80vh; display: grid; place-items: center;
+            background: linear-gradient(45deg, rgba(255,255,255,0.9), rgba(255,255,255,0.2)), 
+                        url('https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80&w=2072');
+            background-size: cover; background-position: center;
+            border-bottom: 2px solid var(--border);
+        }
+        .hero-content { text-align: center; }
+        .hero h1 { font-family: 'Syncopate', sans-serif; font-size: clamp(3rem, 10vw, 8rem); line-height: 0.9; text-transform: uppercase; }
+
+        /* GRID SYSTEM */
+        section { padding: 80px 5%; border-bottom: 2px solid var(--border); }
+        .section-header { margin-bottom: 50px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .section-header h2 { font-family: 'Syncopate', sans-serif; font-size: 2rem; text-transform: uppercase; }
+
+        .dest-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; background: var(--border); border: 2px solid var(--border); }
+        .dest-card { background: var(--bg); padding: 20px; transition: 0.3s; }
+        .dest-card:hover { background: var(--accent); color: white; }
+        .dest-card img { width: 100%; height: 300px; object-fit: cover; filter: grayscale(100%); transition: 0.5s; }
+        .dest-card:hover img { filter: grayscale(0%); }
+
+        /* THE INVESTOR TRIGGER */
+        .invest-strip { 
+            background: var(--gold); padding: 60px 5%; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .invest-strip h2 { font-family: 'Syncopate', sans-serif; max-width: 600px; }
+        .btn-outline { border: 3px solid var(--text); padding: 20px 40px; font-weight: 900; text-transform: uppercase; cursor: pointer; background: transparent; }
+        .btn-outline:hover { background: var(--text); color: var(--gold); }
+
+        /* CONTACT FORM FIX */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
+        .input-row { margin-bottom: 30px; }
+        input, select, textarea { 
+            width: 100%; padding: 15px 0; border: none; border-bottom: 2px solid var(--border); 
+            background: transparent; font-family: inherit; font-size: 1.1rem; outline: none;
+        }
+        input:focus { border-bottom-color: var(--accent); }
+
+        footer { padding: 40px 5%; display: flex; justify-content: space-between; font-weight: 900; text-transform: uppercase; font-size: 0.7rem; }
+
+        @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } .invest-strip { flex-direction: column; gap: 30px; text-align: center; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">ETHIO.PRO</div>
+        <div class="nav-right">
+            <a href="#dest">Destinations</a>
+            <a href="javascript:void(0)" onclick="spawnForm('register')">Register</a>
+            <button class="btn-black" onclick="spawnForm('invest')">INVEST</button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>ORIGIN<br><span style="color:var(--accent)">AFRICA</span></h1>
+        </div>
+    </header>
+
+    <section id="dest">
+        <div class="section-header">
+            <h2>Current Sectors</h2>
+            <p>01 — 09</p>
+        </div>
+        <div class="dest-grid">
+            <div class="dest-card">
+                <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80&w=400">
+                <h3 style="margin-top:20px">LALIBELA</h3>
+            </div>
+            <div class="dest-card">
+                <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80&w=400">
+                <h3 style="margin-top:20px">SIMIEN</h3>
+            </div>
+            <div class="dest-card">
+                <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&q=80&w=400">
+                <h3 style="margin-top:20px">DANAKIL</h3>
+            </div>
+        </div>
+    </section>
+
+    <div class="invest-strip" id="invest">
+        <h2>Capitalize on the fastest growing tourism hub in East Africa.</h2>
+        <button class="btn-outline" onclick="spawnForm('invest')">Review Prospectus</button>
+    </div>
+
+    <section>
+        <div class="contact-grid">
+            <div>
+                <h2 style="font-family:'Syncopate'">Direct<br>Inquiry</h2>
+                <p style="margin-top:20px">info@ethiopro.et<br>+251 900 000 000</p>
+            </div>
+            <form id="mainContact">
+                <div class="input-row"><input type="text" placeholder="NAME" required></div>
+                <div class="input-row"><input type="email" id="mEmail" placeholder="EMAIL" required></div>
+                <div class="input-row"><textarea placeholder="MESSAGE" rows="3"></textarea></div>
+                <button type="submit" class="btn-black" style="width:100%">SEND DISPATCH</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div>©2026 ETHIO.PRO</div>
+        <div>Built for the Land of Origins</div>
+    </footer>
+
+    <script>
+        // FORM ENGINE
+        function spawnForm(mode) {
+            const isInvest = mode === 'invest';
+            const win = window.open('', '_blank');
+            const color = isInvest ? '#ebb22e' : '#2ba11b';
+
+            win.document.write(`
+                <html>
+                <head>
+                    <title>${mode.toUpperCase()}</title>
+                    <style>
+                        body { font-family: 'Inter', sans-serif; background: #fff; padding: 60px 20px; color: #000; }
+                        .form-container { max-width: 500px; margin: auto; border: 4px solid #000; padding: 40px; }
+                        h1 { font-family: 'Syncopate', sans-serif; font-size: 1.5rem; border-bottom: 4px solid #000; padding-bottom: 10px; margin-bottom: 30px; }
+                        input, select { width: 100%; padding: 15px; margin-bottom: 20px; border: 2px solid #000; font-family: inherit; font-weight: bold; outline: none; }
+                        input:focus { background: ${color}; color: white; }
+                        button { width: 100%; padding: 20px; background: #000; color: #fff; border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; }
+                        label { display: block; font-size: 10px; font-weight: 900; margin-bottom: 5px; }
+                    </style>
+                </head>
+                <body>
+                    <div class="form-container">
+                        <h1>${isInvest ? 'INVESTOR_PORTAL' : 'USER_REGISTRATION'}</h1>
+                        <form id="pForm">
+                            <label>IDENTIFICATION</label>
+                            <input type="text" placeholder="FULL NAME" required>
+                            
+                            <label>COMMUNICATION</label>
+                            <input type="email" id="pEmail" placeholder="EMAIL ADDRESS" required>
+                            
+                            ${isInvest ? `
+                                <label>SECTOR</label>
+                                <select><option>INFRASTRUCTURE</option><option>HOSPITALITY</option></select>
+                                <label>VALUATION (USD)</label>
+                                <input type="number" placeholder="50000" required>
+                            ` : `
+                                <label>NATIONALITY</label>
+                                <input type="text" placeholder="COUNTRY">
+                            `}
+                            
+                            <button type="submit" id="sBtn">EXECUTE SUBMISSION</button>
+                        </form>
+                    </div>
+                    <script>
+                        document.getElementById('pForm').onsubmit = (e) => {
+                            e.preventDefault();
+                            const b = document.getElementById('sBtn');
+                            const em = document.getElementById('pEmail').value;
+                            b.innerText = "UPLOADING...";
+                            setTimeout(() => {
+                                alert("DATA SECURED FOR: " + em);
+                                window.close();
+                            }, 1000);
+                        }
+                    <\/script>
+                </body>
+                </html>
+            `);
+            win.document.close();
+        }
+
+        // CONTACT EMAIL FIX
+        document.getElementById('mainContact').onsubmit = function(e) {
+            e.preventDefault();
+            const em = document.getElementById('mEmail').value;
+            alert("DISPATCH SUCCESSFUL. RECIPIENT: " + em);
+            this.reset();
+        };
+    </script>
+</body>
+</html>

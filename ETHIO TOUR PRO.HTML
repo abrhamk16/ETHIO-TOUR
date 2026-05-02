@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETHIO TOUR</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+header {
+    position: fixed;
+    width: 100%;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+nav a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+}
+section {
+    padding: 80px 20px;
+    min-height: 100vh;
+}
+#home {
+    background: url('https://images.unsplash.com/photo-ethiopia') no-repeat center/cover;
+    color: white;
+    text-align: center;
+}
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 15px;
+}
+.card {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+footer {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+.dark {
+    background: #121212;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div><b>ETHIO TOUR</b></div>
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#destination">Destination</a>
+<a href="#transport">Transportation</a>
+<a href="#hotel">Hotel</a>
+<a href="#map">Map</a>
+<a href="#event">Event</a>
+<a href="#contact">Contact</a>
+<a href="#" onclick="openInvestment()">Investment</a>
+<a href="#" onclick="toggleDark()">Dark</a>
+</nav>
+</header>
+
+<section id="home">
+<h1>Welcome to Ethiopia</h1>
+<p>Discover the Land of Origin</p>
+<button onclick="scrollToSection('destination')">Start Journey</button>
+</section>
+
+<section id="about">
+<h2>About</h2>
+<p>Ethiopia is one of the oldest civilizations in the world with rich culture, history, and heritage...</p>
+</section>
+
+<section id="destination">
+<h2>Destinations</h2>
+<div class="grid" id="destinations"></div>
+</section>
+
+<section id="transport">
+<h2>Transportation</h2>
+<ul>
+<li><a href="https://www.ethiopianairlines.com" target="_blank">Airplane</a></li>
+<li>Taxi Services</li>
+<li>Ride Apps</li>
+</ul>
+</section>
+
+<section id="hotel">
+<h2>Hotels</h2>
+<div class="grid" id="hotels"></div>
+</section>
+
+<section id="map">
+<h2>Map</h2>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18" width="100%" height="400"></iframe>
+</section>
+
+<section id="event">
+<h2>Events</h2>
+<p>Timket, Meskel, cultural festivals, music events...</p>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<p>Phone: +251...</p>
+<p>Email: info@ethiotour.com</p>
+</section>
+
+<footer>
+Created by Abrham Kefyalew
+</footer>
+
+<script>
+// DESTINATIONS
+let dest = ["Lalibela","Axum","Gondar","Simien Mountains","Danakil Depression","Harar","Bale Mountains","Lake Tana","Omo Valley","Sof Omar Cave","Entoto","Awash"];
+let destDiv = document.getElementById("destinations");
+
+dest.forEach(d=>{
+    destDiv.innerHTML += `<div class="card"><h3>${d}</h3><p>Beautiful tourist site</p></div>`;
+});
+
+// HOTELS
+let hotels = ["Sheraton Addis","Hilton Addis","Skylight Hotel","Radisson Blu","Golden Tulip","Jupiter Hotel","Harmony Hotel","Capital Hotel","Elilly Hotel","Getfam Hotel"];
+let hotelDiv = document.getElementById("hotels");
+
+hotels.forEach(h=>{
+    hotelDiv.innerHTML += `<div class="card"><h3>${h}</h3><button onclick="window.open('https://google.com')">Book</button></div>`;
+});
+
+// DARK MODE
+function toggleDark(){
+    document.body.classList.toggle("dark");
+}
+
+// SCROLL
+function scrollToSection(id){
+    document.getElementById(id).scrollIntoView();
+}
+
+// INVESTMENT PAGE
+function openInvestment(){
+    let win = window.open();
+    win.document.write("<h1>Investment Form</h1><p>Form Submitted Successfully</p>");
+}
+</script>
+
+</body>
+</html>

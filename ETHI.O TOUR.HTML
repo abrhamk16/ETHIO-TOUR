@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETHIO TOUR | Land of Origins</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary-green: #2d5a27;
+    --ethiopia-gold: #e5b13a;
+    --ethiopia-red: #bb2b2b;
+    --dark-bg: #1a1a1a;
+    --light-bg: #f4f4f4;
+    --white: #ffffff;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family:'Poppins',sans-serif;
+    background:var(--light-bg);
+    overflow-x:hidden;
+}
+
+/* NAV */
+nav {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.2rem 5%;
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+    transition:0.3s;
+}
+
+nav.scrolled {
+    background:white;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-weight:700;
+    color:var(--primary-green);
+}
+
+.nav-links {
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a {
+    text-decoration:none;
+    color:#333;
+}
+
+.login-btn {
+    background:var(--primary-green);
+    color:white;
+    padding:8px 15px;
+    border-radius:5px;
+}
+
+/* HERO */
+.hero {
+    height:100vh;
+    background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=2071');
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    text-align:center;
+}
+
+.hero h1 {
+    font-size:4rem;
+    animation:fadeUp 1s ease;
+}
+
+.hero p {
+    margin:20px 0;
+}
+
+.cta-btn {
+    padding:12px 30px;
+    background:var(--ethiopia-gold);
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+.cta-btn:hover {
+    transform:translateY(-3px);
+}
+
+/* SECTIONS */
+section {
+    padding:80px 10%;
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.6s;
+}
+
+section.show {
+    opacity:1;
+    transform:translateY(0);
+}
+
+h2 {
+    text-align:center;
+    margin-bottom:30px;
+    color:var(--primary-green);
+}
+
+/* GRID */
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card {
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.card:hover {
+    transform:translateY(-10px);
+}
+
+.card-img {
+    height:180px;
+    background-size:cover;
+}
+
+/* FORM */
+.form-container {
+    background:white;
+    padding:30px;
+    border-radius:10px;
+}
+
+input, select, textarea {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+/* FOOTER */
+footer {
+    background:var(--dark-bg);
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+    from {opacity:0; transform:translateY(30px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+/* MOBILE */
+.menu-toggle { display:none; }
+
+@media(max-width:900px){
+    .nav-links {
+        display:none;
+        flex-direction:column;
+        position:absolute;
+        top:60px;
+        left:0;
+        width:100%;
+        background:white;
+    }
+    .nav-links.active { display:flex; }
+    .menu-toggle { display:block; font-size:1.5rem; cursor:pointer; }
+}
+</style>
+</head>
+
+<body>
+
+<nav id="navbar">
+<div class="logo">ETHIO TOUR</div>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<ul class="nav-links" id="navLinks">
+<li><a href="#home">HOME</a></li>
+<li><a href="#about">ABOUT</a></li>
+<li><a href="#destination">DESTINATION</a></li>
+<li><a href="#transport">TRANSPORT</a></li>
+<li><a href="#hotel">HOTEL</a></li>
+<li><a href="#culture">CULTURE</a></li>
+<li><a href="#contact">CONTACT</a></li>
+<li><a href="#login" class="login-btn">LOGIN</a></li>
+</ul>
+</nav>
+
+<header class="hero" id="home">
+<h1>Explore Ethiopia 🇪🇹</h1>
+<p>Land of Origins. Culture. Adventure.</p>
+<button class="cta-btn" onclick="scrollToSection('destination')">Start Journey</button>
+</header>
+
+<section id="about">
+<h2>About</h2>
+<p style="text-align:center;max-width:600px;margin:auto;">
+Discover Ethiopia’s history, landscapes, and culture.
+</p>
+</section>
+
+<section id="destination">
+<h2>Destinations</h2>
+<div class="grid">
+<div class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1616428383321-4f76ca02484c?q=80&w=2070')"></div></div>
+<div class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1594916896131-017646549a17?q=80&w=1974')"></div></div>
+<div class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1563214532-68393e843e99?q=80&w=1964')"></div></div>
+</div>
+</section>
+
+<section id="transport">
+<h2>Transportation</h2>
+<div class="form-container">
+<input placeholder="From">
+<input placeholder="To">
+<select><option>Car</option><option>Bus</option></select>
+<input type="date">
+<button class="cta-btn" onclick="book()">Check</button>
+</div>
+</section>
+
+<section id="hotel">
+<h2>Hotels</h2>
+<div class="grid">
+<div class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070')"></div></div>
+<div class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1582719478250-c89cae4df85b?q=80&w=2070')"></div></div>
+</div>
+</section>
+
+<section id="culture">
+<h2>Culture</h2>
+<p style="text-align:center;">Festivals, coffee, traditions.</p>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<div class="form-container">
+<input placeholder="Name">
+<input placeholder="Email">
+<textarea placeholder="Message"></textarea>
+<button class="cta-btn">Send</button>
+</div>
+</section>
+
+<footer>
+<p>© 2026 ETHIO TOUR</p>
+</footer>
+
+<script>
+// NAV SCROLL EFFECT
+window.addEventListener("scroll",()=>{
+    document.getElementById("navbar").classList.toggle("scrolled", window.scrollY>50);
+});
+
+// MENU
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("active");
+}
+
+// SCROLL
+function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+// BUTTON
+function book(){
+    alert("Checking transport availability...");
+}
+
+// SCROLL ANIMATION
+const sections=document.querySelectorAll("section");
+
+window.addEventListener("scroll",()=>{
+    sections.forEach(sec=>{
+        const top=window.scrollY;
+        const offset=sec.offsetTop-400;
+        if(top>offset){
+            sec.classList.add("show");
+        }
+    });
+});
+</script>
+
+</body>
+</html>

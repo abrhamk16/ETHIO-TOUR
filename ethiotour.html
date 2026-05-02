@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ethio Tour Welcome to Ethiopia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Bebas+Neue&family=Josefin+Sans:wght@200;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --gold: #C9973A;
+  --gold-light: #E8C06A;
+  --green: #23f581;
+  --green-light: #28eb80;
+  --red: #8B1A1A;
+  --cream: #F5EDD6;
+  --dark: #160101;
+  --dark2: #1A1A1A;
+  --text: #1a1a1a;
+  --text-light: #555;
+  --bg: #FDFAF4;
+  --nav-bg: rgba(10,10,10,0.92);
+  --card-bg: #fff;
+  --section-alt: #F0E8D0;
+  --shadow: 0 8px 40px rgba(0,0,0,0.15);
+}
+[data-theme="dark"] {
+  --bg: #0D0D0D;
+  --text: #F5EDD6;
+  --text-light: #aaa;
+  --card-bg: #1c1c1c;
+  --section-alt: #161610;
+  --cream: #1c1c1c;
+  --shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Cormorant Garamond',serif;background:var(--bg);color:var(--text);transition:background 0.4s,color 0.4s;overflow-x:hidden;}
+
+/* ─── NAVBAR ─── */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,151,58,0.3);transition:all 0.3s;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:62px;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.12em;color:var(--gold);text-decoration:none;white-space:nowrap;}
+.nav-logo span{color:#fff;}
+.nav-links{display:flex;align-items:center;gap:0.1rem;flex-wrap:wrap;}
+.nav-links a{font-family:'Josefin Sans',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#ddd;text-decoration:none;padding:0.4rem 0.55rem;border-radius:3px;transition:color 0.2s,background 0.2s;white-space:nowrap;}
+.nav-links a:hover{color:var(--gold);background:rgba(201,151,58,0.1);}
+.nav-controls{display:flex;align-items:center;gap:0.6rem;}
+#langBtn{font-family:'Josefin Sans',sans-serif;font-size:0.7rem;font-weight:600;background:rgba(201,151,58,0.15);border:1px solid var(--gold);color:var(--gold);padding:0.35rem 0.7rem;border-radius:3px;cursor:pointer;letter-spacing:0.08em;}
+#darkToggle{background:none;border:1px solid #555;color:#ccc;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:0.85rem;display:flex;align-items:center;justify-content:center;transition:all 0.3s;}
+#darkToggle:hover{border-color:var(--gold);color:var(--gold);}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-hamburger span{width:22px;height:2px;background:var(--gold);display:block;border-radius:2px;}
+
+/* ─── HERO ─── */
+#home{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=1800&q=80') center/cover no-repeat;filter:brightness(0.45);}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(26,92,56,0.45) 0%,rgba(139,26,26,0.3) 50%,rgba(201,151,58,0.25) 100%);}
+.hero-content{position:relative;z-index:2;text-align:center;padding:2rem;max-width:900px;}
+.hero-flag{display:flex;gap:0;margin:0 auto 2rem;width:90px;height:6px;border-radius:4px;overflow:hidden;}
+.hero-flag span:nth-child(1){flex:1;background:#1A5C38;}
+.hero-flag span:nth-child(2){flex:1;background:#C9973A;}
+.hero-flag span:nth-child(3){flex:1;background:#8B1A1A;}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-0.01em;text-shadow:0 4px 30px rgba(0,0,0,0.5);}
+.hero-title em{color:var(--gold-light);font-style:normal;}
+.hero-slogan{font-family:'Josefin Sans',sans-serif;font-size:clamp(0.9rem,2vw,1.15rem);letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin:1.2rem 0 2.5rem;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-primary{font-family:'Josefin Sans',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;background:var(--gold);color:#000;padding:0.9rem 2.5rem;border-radius:2px;text-decoration:none;border:none;cursor:pointer;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.5rem;}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 25px rgba(201,151,58,0.4);}
+.btn-outline{font-family:'Josefin Sans',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;background:transparent;color:#fff;padding:0.9rem 2.5rem;border-radius:2px;text-decoration:none;border:1px solid rgba(255,255,255,0.5);cursor:pointer;transition:all 0.3s;}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,0.1);}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.5rem;color:rgba(255,255,255,0.5);font-family:'Josefin Sans',sans-serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;animation:bounce 2s infinite;}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+
+/* ─── SECTION COMMON ─── */
+.section{padding:6rem 2rem;}
+.section-alt{background:var(--section-alt);}
+.section-header{text-align:center;margin-bottom:4rem;}
+.section-eyebrow{font-family:'Josefin Sans',sans-serif;font-size:0.7rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.8rem;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.15;}
+.section-line{width:60px;height:2px;background:var(--gold);margin:1.2rem auto 0;}
+.container{max-width:1260px;margin:0 auto;}
+
+/* ─── ABOUT ─── */
+#about{background:linear-gradient(135deg,#0a1f12 0%,#1A2A1A 30%,#0D1A0D 70%,#1a0a0a 100%);color:#F5EDD6;position:relative;overflow:hidden;}
+#about::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9973A' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+#about .section-title{color:#F5EDD6;}
+#about .section-eyebrow{color:var(--gold-light);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.about-text h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--gold-light);margin:2rem 0 0.8rem;}
+.about-text p{font-size:1.05rem;line-height:1.85;color:rgba(245,237,214,0.85);margin-bottom:1rem;}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+.stat-box{background:rgba(201,151,58,0.08);border:1px solid rgba(201,151,58,0.2);padding:1.5rem;border-radius:4px;text-align:center;}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);display:block;}
+.stat-label{font-family:'Josefin Sans',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(245,237,214,0.6);margin-top:0.3rem;}
+.about-img-stack{position:relative;height:600px;}
+.about-img-main{position:absolute;top:0;right:0;width:80%;height:70%;object-fit:cover;border-radius:4px;}
+.about-img-sec{position:absolute;bottom:0;left:0;width:60%;height:50%;object-fit:cover;border-radius:4px;border:4px solid rgba(10,31,18,1);}
+.about-img-accent{position:absolute;top:50%;right:-10px;transform:translateY(-50%);width:40%;height:35%;object-fit:cover;border-radius:4px;border:4px solid rgba(10,31,18,1);}
+
+/* ─── DESTINATIONS ─── */
+.dest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.8rem;}
+.dest-card{background:var(--card-bg);border-radius:6px;overflow:hidden;box-shadow:var(--shadow);transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;}
+.dest-card:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(0,0,0,0.2);}
+.dest-img{width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.5s;}
+.dest-card:hover .dest-img{transform:scale(1.05);}
+.dest-img-wrap{overflow:hidden;position:relative;}
+.dest-badge{position:absolute;top:12px;left:12px;background:var(--gold);color:#000;font-family:'Josefin Sans',sans-serif;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px;}
+.dest-body{padding:1.4rem;}
+.dest-body h3{font-family:'Playfair Display',serif;font-size:1.25rem;margin-bottom:0.5rem;}
+.dest-body p{font-size:0.95rem;line-height:1.7;color:var(--text-light);}
+.dest-meta{display:flex;align-items:center;gap:0.5rem;margin-top:1rem;font-family:'Josefin Sans',sans-serif;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);}
+
+/* ─── TRANSPORTATION ─── */
+#transportation{background:var(--dark);color:#F5EDD6;}
+.transport-tabs{display:flex;gap:1rem;justify-content:center;margin-bottom:3rem;flex-wrap:wrap;}
+.tab-btn{font-family:'Josefin Sans',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;background:transparent;border:1px solid #444;color:#aaa;padding:0.7rem 1.8rem;border-radius:2px;cursor:pointer;transition:all 0.3s;}
+.tab-btn.active,.tab-btn:hover{background:var(--gold);color:#000;border-color:var(--gold);}
+.transport-panel{display:none;}
+.transport-panel.active{display:block;}
+.transport-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;}
+.transport-card{background:#1c1c1c;border:1px solid #333;border-radius:6px;padding:1.8rem;transition:border-color 0.3s,transform 0.3s;}
+.transport-card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.transport-card i{font-size:2rem;color:var(--gold);margin-bottom:1rem;display:block;}
+.transport-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:#F5EDD6;margin-bottom:0.5rem;}
+.transport-card p{font-size:0.95rem;line-height:1.7;color:#888;margin-bottom:1.2rem;}
+.transport-card a,.transport-card button{display:inline-block;font-family:'Josefin Sans',sans-serif;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;background:var(--gold);color:#000;padding:0.6rem 1.4rem;border-radius:2px;text-decoration:none;border:none;cursor:pointer;transition:background 0.2s;}
+.transport-card a:hover,.transport-card button:hover{background:var(--gold-light);}
+
+/* ─── HOTELS ─── */
+.hotel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem;}
+.hotel-card{background:var(--card-bg);border-radius:6px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;}
+.hotel-img{width:100%;height:200px;object-fit:cover;}
+.hotel-body{padding:1.5rem;flex:1;display:flex;flex-direction:column;}
+.hotel-stars{color:var(--gold);font-size:0.8rem;margin-bottom:0.5rem;}
+.hotel-body h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:0.4rem;}
+.hotel-city{font-family:'Josefin Sans',sans-serif;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;}
+.hotel-body p{font-size:0.92rem;line-height:1.65;color:var(--text-light);flex:1;}
+.hotel-book{display:block;margin-top:1.2rem;text-align:center;font-family:'Josefin Sans',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;background:var(--green);color:#fff;padding:0.7rem;border-radius:3px;text-decoration:none;transition:background 0.2s;}
+.hotel-book:hover{background:var(--green-light);}
+
+/* ─── MAP ─── */
+#map-section{background:var(--dark2);}
+#map-section .section-title{color:#F5EDD6;}
+#map-section .section-eyebrow{color:var(--gold);}
+.map-container{border-radius:8px;overflow:hidden;box-shadow:0 0 60px rgba(201,151,58,0.2);border:1px solid rgba(201,151,58,0.3);}
+.map-container iframe{width:100%;height:600px;display:block;border:none;}
+.map-pins{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-top:2rem;}
+.map-pin{background:rgba(255,255,255,0.05);border:1px solid #333;border-radius:4px;padding:1rem;display:flex;align-items:center;gap:0.7rem;color:#ccc;font-family:'Josefin Sans',sans-serif;font-size:0.72rem;letter-spacing:0.08em;cursor:pointer;transition:border-color 0.2s,background 0.2s;}
+.map-pin:hover{border-color:var(--gold);background:rgba(201,151,58,0.08);}
+.map-pin i{color:var(--gold);font-size:1rem;}
+
+/* ─── EVENTS ─── */
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:2rem;}
+.event-card{background:var(--card-bg);border-radius:6px;overflow:hidden;box-shadow:var(--shadow);display:flex;gap:0;}
+.event-date{background:var(--red);color:#fff;padding:1.2rem 1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:80px;font-family:'Bebas Neue',sans-serif;}
+.event-date .month{font-size:0.85rem;letter-spacing:0.1em;}
+.event-date .day{font-size:2.5rem;line-height:1;}
+.event-body{padding:1.2rem;}
+.event-body h3{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:0.4rem;}
+.event-body p{font-size:0.9rem;line-height:1.6;color:var(--text-light);}
+.event-tag{display:inline-block;font-family:'Josefin Sans',sans-serif;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;background:rgba(201,151,58,0.12);color:var(--gold);padding:0.2rem 0.5rem;border-radius:2px;margin-top:0.5rem;}
+.celeb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem;margin-top:3rem;}
+.celeb-card{background:var(--card-bg);border-radius:6px;overflow:hidden;box-shadow:var(--shadow);text-align:center;padding:1.5rem 1rem;}
+.celeb-img{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);margin:0 auto 1rem;}
+.celeb-card h4{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:0.2rem;}
+.celeb-card span{font-family:'Josefin Sans',sans-serif;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);}
+
+/* ─── CONTACT ─── */
+#contact{background:linear-gradient(135deg,#0a1f12 0%,#0D1A0D 100%);color:#F5EDD6;}
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start;}
+.contact-info h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--gold-light);margin-bottom:1.5rem;}
+.contact-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;}
+.contact-item i{font-size:1.2rem;color:var(--gold);margin-top:0.2rem;width:20px;}
+.contact-item div{font-size:1rem;line-height:1.7;color:rgba(245,237,214,0.8);}
+.contact-item div strong{display:block;font-family:'Josefin Sans',sans-serif;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.2rem;}
+.social-links{display:flex;gap:0.8rem;margin-top:2rem;}
+.social-links a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(201,151,58,0.3);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;transition:all 0.3s;}
+.social-links a:hover{background:var(--gold);color:#000;}
+.contact-form{background:rgba(255,255,255,0.04);border:1px solid rgba(201,151,58,0.15);border-radius:6px;padding:2rem;}
+.form-group{margin-bottom:1.2rem;}
+.form-group label{display:block;font-family:'Josefin Sans',sans-serif;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,237,214,0.6);margin-bottom:0.4rem;}
+.form-group input,.form-group textarea{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:3px;padding:0.8rem 1rem;color:#F5EDD6;font-family:'Cormorant Garamond',serif;font-size:1rem;outline:none;transition:border-color 0.2s;resize:vertical;}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--gold);}
+.form-group textarea{min-height:120px;}
+
+/* ─── LOGIN MODAL ─── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:99999;display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px);}
+.modal-overlay.open{display:flex;}
+.modal-box{background:var(--card-bg);border-radius:8px;width:100%;max-width:460px;padding:3rem;position:relative;border-top:3px solid var(--gold);box-shadow:0 30px 80px rgba(0,0,0,0.4);}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--text-light);}
+.modal-tabs{display:flex;gap:0;margin-bottom:2rem;border-bottom:1px solid #eee;}
+[data-theme="dark"] .modal-tabs{border-color:#333;}
+.modal-tab{flex:1;font-family:'Josefin Sans',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;background:none;border:none;padding:0.8rem;cursor:pointer;color:var(--text-light);border-bottom:2px solid transparent;transition:all 0.2s;}
+.modal-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.modal-form{display:none;}
+.modal-form.active{display:block;}
+.modal-form h2{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:1.5rem;}
+.mform-group{margin-bottom:1rem;}
+.mform-group label{display:block;font-family:'Josefin Sans',sans-serif;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.35rem;}
+.mform-group input{width:100%;background:var(--bg);border:1px solid #ddd;border-radius:3px;padding:0.75rem 1rem;color:var(--text);font-family:'Cormorant Garamond',serif;font-size:1rem;outline:none;transition:border-color 0.2s;}
+[data-theme="dark"] .mform-group input{border-color:#333;}
+.mform-group input:focus{border-color:var(--gold);}
+
+/* ─── INVESTMENT & REGISTRATION ─── */
+.inv-page{min-height:100vh;background:var(--bg);padding:6rem 2rem;font-family:'Cormorant Garamond',serif;}
+.inv-form-wrap{max-width:700px;margin:0 auto;background:var(--card-bg);border-radius:8px;padding:3rem;box-shadow:var(--shadow);border-top:4px solid var(--gold);}
+.inv-form-wrap h1{font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:0.5rem;}
+.inv-form-wrap p.subtitle{color:var(--text-light);margin-bottom:2rem;font-size:1rem;}
+
+/* ─── LANG DROPDOWN ─── */
+.lang-dropdown{position:relative;}
+.lang-menu{position:absolute;top:calc(100% + 8px);right:0;background:#1c1c1c;border:1px solid rgba(201,151,58,0.3);border-radius:4px;min-width:140px;overflow:hidden;display:none;z-index:10000;}
+.lang-menu.open{display:block;}
+.lang-menu a{display:block;padding:0.6rem 1rem;font-family:'Josefin Sans',sans-serif;font-size:0.72rem;letter-spacing:0.06em;color:#ddd;text-decoration:none;transition:background 0.2s;}
+.lang-menu a:hover{background:rgba(201,151,58,0.1);color:var(--gold);}
+
+/* ─── BACK TO TOP ─── */
+#backTop{position:fixed;bottom:2rem;right:2rem;z-index:9990;width:44px;height:44px;background:var(--gold);color:#000;border:none;border-radius:50%;font-size:1.1rem;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(201,151,58,0.4);transition:transform 0.2s;}
+#backTop.show{display:flex;}
+#backTop:hover{transform:scale(1.1);}
+
+/* ─── FOOTER ─── */
+footer{background:#000;color:#666;padding:2.5rem 2rem;text-align:center;border-top:1px solid #1a1a1a;}
+footer .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.5rem;}
+footer p{font-family:'Josefin Sans',sans-serif;font-size:0.72rem;letter-spacing:0.1em;}
+footer a{color:var(--gold);text-decoration:none;}
+
+/* ─── NOTIFICATION ─── */
+.notif{position:fixed;top:80px;right:2rem;z-index:99998;background:var(--green);color:#fff;padding:1rem 1.5rem;border-radius:4px;font-family:'Josefin Sans',sans-serif;font-size:0.8rem;letter-spacing:0.08em;box-shadow:0 8px 30px rgba(0,0,0,0.3);transform:translateX(150%);transition:transform 0.4s;max-width:300px;}
+.notif.show{transform:translateX(0);}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .nav-links{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(10,10,10,0.98);flex-direction:column;padding:1.5rem;gap:0.5rem;border-bottom:1px solid #222;}
+  .nav-links.open{display:flex;}
+  .nav-hamburger{display:flex;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;}
+  .about-img-stack{height:350px;margin-top:2rem;}
+}
+@media(max-width:600px){
+  .dest-grid,.hotel-grid{grid-template-columns:1fr;}
+  .events-grid{grid-template-columns:1fr;}
+  .hero-title{font-size:2.5rem;}
+}
+
+/* ─── ANIMATIONS ─── */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- NOTIFICATION -->
+<div class="notif" id="notif"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">ETHIO<span> TOUR</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#destinations">Destination</a>
+      <a href="#transportation">Transportation</a>
+      <a href="#hotels">Hotel</a>
+      <a href="#map-section">Map</a>
+      <a href="#events">Event</a>
+      <a href="investment.html" target="_blank">Investment</a>
+      <a href="registration.html" target="_blank">Registration</a>
+      <a href="#contact">Contact</a>
+      <a href="#" onclick="openLogin();return false;">Login</a>
+    </div>
+    <div class="nav-controls">
+      <div class="lang-dropdown">
+        <button id="langBtn" onclick="toggleLang()">🌍 EN</button>
+        <div class="lang-menu" id="langMenu">
+          <a href="#" onclick="setLang('en','EN');return false;"> English</a>
+          <a href="#" onclick="setLang('am','አማ');return false;"> አማርኛ</a>
+          <a href="#" onclick="setLang('fr','FR');return false;"> Français</a>
+          <a href="#" onclick="setLang('ar','AR');return false;"> العربية</a>
+          <a href="#" onclick="setLang('zh','中文');return false;"> 中文</a>
+          <a href="#" onclick="setLang('de','DE');return false;"> Deutsch</a>
+        </div>
+      </div>
+      <button id="darkToggle" onclick="toggleDark()" title="Toggle Dark Mode"><i class="fa fa-moon"></i></button>
+      <div class="nav-hamburger" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-flag"><span></span><span></span><span></span></div>
+    <h1 class="hero-title">Ethio Tour <br><em>Welcome to Ethiopia</em></h1>
+    <p class="hero-slogan">Discover the Land of Origin Ethiopia</p>
+    <div class="hero-btns">
+      <a href="#destinations" class="btn-primary"><i class="fa fa-compass"></i> Start Journey</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><i class="fa fa-chevron-down"></i><span>Scroll</span></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Our Story</span>
+      <h2 class="section-title" style="color:#F5EDD6;">Ethiopia – The Cradle of Civilization</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <h3>Ancient History & Origins</h3>
+        <p>Ethiopia stands as one of the world's oldest nations, with human civilization stretching back over 3.5 million years. The discovery of Lucy (Dinknesh) — the famous Australopithecus afarensis fossil — in the Afar region cemented Ethiopia's place as the cradle of humankind. This extraordinary nation has been continuously inhabited longer than virtually any other on Earth.</p>
+        <h3>The Aksumite Empire</h3>
+        <p>The Aksumite Empire, flourishing from the 1st to 8th centuries AD, was one of the four great powers of the ancient world alongside Rome, Persia, and China. Aksum minted its own coins, built towering obelisks (stelae) that still stand today, and was among the first nations to adopt Christianity as a state religion in 330 AD under King Ezana. The empire controlled vast trade routes stretching from the Mediterranean to India.</p>
+        <h3>Land of the Queen of Sheba</h3>
+        <p>According to Ethiopian tradition and the Kebra Nagast (Glory of Kings), the Queen of Sheba — known as Makeda in Ethiopia — visited King Solomon of Israel, beginning a divine lineage. Their union produced Menelik I, who is said to have brought the Ark of the Covenant to Ethiopia, where Ethiopians believe it resides in Axum to this day, guarded by a single monk.</p>
+        <h3>The Only Uncolonized African Nation</h3>
+        <p>Ethiopia holds the unique distinction of being the only African country to successfully resist European colonization. Under Emperor Menelik II, Ethiopian forces decisively defeated the Italian army at the Battle of Adwa in 1896, an event that reverberated across Africa and the African diaspora as a symbol of Black freedom and sovereignty. This victory earned Ethiopia immense respect worldwide.</p>
+        <h3>About Ethio Tour</h3>
+        <p>Ethio Tour is Ethiopia's premier digital tourism platform, dedicated to showcasing the breathtaking landscapes, ancient monuments, vibrant cultures, and warm hospitality of this remarkable nation. We connect travelers with authentic experiences — from the rock-hewn churches of Lalibela to the tribes of the Omo Valley, from the Simien Mountains to the Danakil Depression. Our mission is to inspire, inform, and immerse every visitor in the true soul of Ethiopia.</p>
+        <div class="about-stats">
+          <div class="stat-box"><span class="stat-num">3.5M</span><div class="stat-label">Years of Human History</div></div>
+          <div class="stat-box"><span class="stat-num">9</span><div class="stat-label">UNESCO World Heritage Sites</div></div>
+          <div class="stat-box"><span class="stat-num">80+</span><div class="stat-label">Ethnic Groups</div></div>
+          <div class="stat-box"><span class="stat-num">120M+</span><div class="stat-label">Population</div></div>
+        </div>
+      </div>
+      <div class="about-img-stack">
+        <img class="about-img-main" src="https://images.unsplash.com/photo-1566694271453-390536dd1f0d?w=800&q=80" alt="Lalibela Church">
+        <img class="about-img-sec" src="https://images.unsplash.com/photo-1612892483236-52d32a0e0ac1?w=600&q=80" alt="Ethiopian landscape">
+        <img class="about-img-accent" src="https://images.unsplash.com/photo-1569949038013-4b7f1e6a0a9e?w=400&q=80" alt="Ethiopian culture">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-eyebrow">Explore Ethiopia</span>
+      <h2 class="section-title">Top Destinations</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="dest-grid">
+      <!-- 12 destinations -->
+      <div class="dest-card fade-in">
+        <div class="dest-img-wrap">
+          <img class="dest-img" src="https://images.unsplash.com/photo-1566694271453-390536dd1f0d?w=600&q=80" alt="Lalibela">
+          <span class="dest-badge">UNESCO</span>
+        </div>
+        <div class="dest-body">
+          <h3>Lalibela</h3>
+          <p>Home to 11 monolithic rock-hewn churches carved from living rock in the 12th century, Lalibela is considered the "New Jerusalem" of Ethiopia and one of Africa's most sacred sites.</p>
+          <div class="dest-meta"><i class="fa fa-map-marker-alt"></i> Amhara Region</div>
+        </div>
+      </div>
+      <div class="dest-card fade-in">
+        <div class="dest-img-wrap">
+          <img class="dest-img" src="https://images.unsplash.com/photo-1614535455434-a9c4fb0f5e24?w=600&q=80" alt="Simien Mountains">
+          <span class="dest-badge">UNESCO</span>
+        </div>
+        <div class="dest-body">
+          <h3>Simien Mountains</h3>
+          <p>A dramatic landscape of jagged peaks, deep valleys, and sheer escarpments rising to over 4,500m. Home to the endangered Gelada baboon, Ethiopian wolf, and Walia ibex.</p>
+          <div class="dest-meta"><i class="fa fa-map-marker-alt"></i> Gondar Region</div>
+        </div>
+      </div>
+      <div class="dest-card fade-in">
+        <div class="dest-img-wrap">
+          <img class="dest-img" src="https://images.unsplash.com/photo-1612892483236-52d32a0e0ac1?w=600&q=80" alt="Axum">
+          <span class="dest-badge">UNESCO</span>
+        </div>
+        <div class="dest-body">
+          <h3>Axum (Aksum)</h3>
+          <p>The ancient capital of the Aksumite Empire, featuring towering obelisks, royal tombs, the Church of St. Mary of Zion, and rumoured home of the Ark of the Covenant.</p>
+          <div class="dest-meta"><i class="fa fa-map-marker-alt"></i> Tigray Region</div>
+        </div>
+      </div>
+      <div class="dest-card fade-in">
+        <div class="dest-img-wrap">
+          <img class="dest-img" src="https://images.unsplash.com/photo-1548678498-73639bf2d7d4?w=600&q=80" alt="Danakil Depression">
+          <span class="dest-badge">Extreme</span>
+        </div>
+        <div class="dest-body">
+          <h3>Danakil Depression</h3>
+          <p>One of the hottest and most alien landscapes on Earth, featuring neon-colored acidic hot springs at Dallol, active lava lakes at Erta Ale volcano, and vast salt flats.</p>
+          <div class="dest-meta"><i class="fa fa-map-marker-alt"></i> Afar Region</div>
+        </div>
+      </div>
+      <div class="dest-card fade-in">
+        <div class="dest-img-wrap">
+          <img class="dest-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Addis Ababa">
+          <span class="dest-badge">Capital</span>
+        </div>
+        <div class="dest-body">
+          <h3>Addis Ababa</h3>
+          <p>Ethiopia's cosmopolitan capital offers the National Museum (home of Lucy), the Holy Trinity Cathedral, vibrant Mercato market, and a thriving restaurant and art scene.</p>
+          <div class="dest-meta"><i class="fa fa-map-marker-alt"></i> Central Ethiopia</div>
+        </div>
+      </div>
+      <div class="dest-card fade-in">
+        <div class="dest-img-wrap">
+          <img class="dest-img" src="https://images.unsplash.com/photo-1569949038013-4b7f1e6a0a9e?w=600&q=80" alt="Gondar">
+          <span class="dest-badge">Royal</span>
+        </div>
+        <div class="dest-body">
+          <h3>Gondar – Royal Enclosure</h3>
+          <p>Known as the "Camelot of Africa," Gondar's 17th-century Royal Enclosure (Fasil Ghebbi) contains six castles and palaces built by Emperor Fasilides and his successors.</p>
+          <div class="dest-meta"><i class="fa fa-map-marker-alt"></i> Amhara Region</div>
+        </div>
+      </div>
+      <div class="dest-card fade-in">
+        <div class="dest-img-wrap">
+          <img class="dest-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80" alt="Omo Valley">
+          <span class="dest-badge">Culture</span>
+        </div>
+        <div class="dest-body">
+          <h3>Omo Valley</h3>
+          <p>A living museum of indigenous cultures, home to the Mursi, Hamer, Karo, and Dassanech tribes. Known for lip plates, bull-jumping ceremonies, and extraordinary body art traditions.</p>
+          <div class="dest-meta"><i class="fa fa-map-marker-alt"></i> SNNPR Region</div>
+        </div>
+      </div>
+      <div class="dest-card fade-in">
+        <div class="dest-img-wrap">
+          <img class="dest-img" src="https://images.unsplash.com/photo-1541795083-1b160cf4f3d7?w=600&q=80" alt="Lake Tana">
+          <span class="dest-badge">Nature</span>
+        </div>
+        <div class="dest-body">
+          <h3>Lake Tana & Blue Nile Falls</h3>
+          <p>Ethiopia's largest lake contains 37 islands with medieval monasteries adorned with sacred art. Nearby Tis Abay (Blue Nile Falls) roars with a 400m wide curtain of water.</p>
+          <div class="dest-meta"><i class="fa fa-map-marker-alt"></i> Bahir Dar</div>
+        </div>
+      </div>
+      <div class="dest-card fade-in">
+        <div class="dest-img-wrap">
+          <img class="dest-img" src="https://images.unsplash.com/photo-1549880181-56a44cf4a9a5?w=600&q=80" alt="Bale Mountains">
+          <span class="dest-badge">Wildlife</span>
+        </div>
+        <div class="dest-body">
+          <h3>Bale Mountains National Park</h3>
+          <p>The largest continuous Afroalpine ecosystem in Africa, sheltering the endangered Ethiopian wolf — Africa's rarest canid — alongside vast moorlands, forests, and Harenna wilderness.</p>
+          <div class="dest-meta"><i class="fa fa-map-marker-alt"></i> Oromia Region</div>
+        </div>
+      </div>
+      <div class="dest-card fade-in">
+        <div class="dest-img-wrap">
+          <img class="dest-img" src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=600&q=80" alt="Harar">
+          <span class="dest-badge">UNESCO</span>
+        </div>
+        <div class="dest-body">
+          <h3>Harar – Jugol Old City</h3>
+          <p>A UNESCO-listed walled city considered the 4th holiest city of Islam, with 82 mosques, colorful painted houses, narrow alleyways, and the famous nightly hyena feeding ritual.</p>
+          <div class="dest-meta"><i class="fa fa-map-marker-alt"></i> Harari Region</div>
+        </div>
+      </div>
+      <div class="dest-card fade-in">
+        <div class="dest-img-wrap">
+          <img class="dest-img" src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=80" alt="Tigray Rock Churches">
+          <span class="dest-badge">Sacred</span>
+        </div>
+        <div class="dest-body">
+          <h3>Tigray Rock-Hewn Churches</h3>
+          <p>Over 120 ancient churches carved into sheer cliff faces and remote mountains across the Tigray region, many dating to the 4th–6th centuries. Accessible only by rope or cliff trails.</p>
+          <div class="dest-meta"><i class="fa fa-map-marker-alt"></i> Tigray Region</div>
+        </div>
+      </div>
+      <div class="dest-card fade-in">
+        <div class="dest-img-wrap">
+          <img class="dest-img" src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=600&q=80" alt="Awash National Park">
+          <span class="dest-badge">Safari</span>
+        </div>
+        <div class="dest-body">
+          <h3>Awash National Park</h3>
+          <p>Ethiopia's oldest national park, where the Awash River cascades over dramatic falls. Home to oryx, greater kudu, salt's dik-dik, and diverse birdlife exceeding 450 species.</p>
+          <div class="dest-meta"><i class="fa fa-map-marker-alt"></i> Afar Region</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPORTATION -->
+<section id="transportation" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-eyebrow" style="color:var(--gold-light)">Get Around</span>
+      <h2 class="section-title" style="color:#F5EDD6;">Transportation</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="transport-tabs">
+      <button class="tab-btn active" onclick="showTab('air')"><i class="fa fa-plane"></i> &nbsp;Airlines</button>
+      <button class="tab-btn" onclick="showTab('taxi')"><i class="fa fa-taxi"></i> &nbsp;Taxi Services</button>
+      <button class="tab-btn" onclick="showTab('ride')"><i class="fa fa-car"></i> &nbsp;Ride Hailing</button>
+    </div>
+    <div class="transport-panel active" id="tab-air">
+      <div class="transport-cards">
+        <div class="transport-card">
+          <i class="fa fa-plane-departure"></i>
+          <h3>Ethiopian Airlines</h3>
+          <p>Africa's largest and most awarded airline, connecting Ethiopia to 130+ destinations worldwide. Winner of multiple African Airline of the Year awards.</p>
+          <a href="https://www.ethiopianairlines.com" target="_blank">Book a Flight</a>
+        </div>
+        <div class="transport-card">
+          <i class="fa fa-plane"></i>
+          <h3>Domestic Flights</h3>
+          <p>Ethiopian Airlines operates extensive domestic routes between Addis Ababa, Lalibela, Axum, Gondar, Jimma, Dire Dawa, Mekelle, and more.</p>
+          <a href="https://www.ethiopianairlines.com/en/fly/destinations/domestic" target="_blank">Domestic Routes</a>
+        </div>
+        <div class="transport-card">
+          <i class="fa fa-globe"></i>
+          <h3>International Connections</h3>
+          <p>Addis Ababa Bole International Airport serves as Africa's primary hub. Connect to Europe, Asia, Americas, and all African capitals with ease.</p>
+          <a href="https://www.addisababaairport.com" target="_blank">Airport Info</a>
+        </div>
+        <div class="transport-card">
+          <i class="fa fa-ticket-alt"></i>
+          <h3>Charter Flights</h3>
+          <p>Private and charter flights available to remote areas including Erta Ale, Omo Valley airstrips, and national park airfields for exclusive tours.</p>
+          <a href="https://www.ethiopianairlines.com" target="_blank">Charter Services</a>
+        </div>
+      </div>
+    </div>
+    <div class="transport-panel" id="tab-taxi">
+      <div class="transport-cards">
+        <div class="transport-card">
+          <i class="fa fa-taxi"></i>
+          <h3>Feres Addis (Blue Taxis)</h3>
+          <p>Addis Ababa's iconic blue-and-white shared taxis are the city's primary transit. Inexpensive and widely available on all major routes through the capital.</p>
+          <button onclick="notify('Shared taxis available throughout Addis Ababa. Negotiate fare before boarding.')">More Info</button>
+        </div>
+        <div class="transport-card">
+          <i class="fa fa-car-side"></i>
+          <h3>Contract Taxis</h3>
+          <p>Private contract taxis available throughout Ethiopia for fixed-price hire. Ideal for airport transfers, city tours, and inter-city travel with flexibility.</p>
+          <button onclick="notify('Contact your hotel reception to arrange a reliable contract taxi.')">Book Now</button>
+        </div>
+        <div class="transport-card">
+          <i class="fa fa-shuttle-van"></i>
+          <h3>Minibus Taxis</h3>
+          <p>Blue-and-white minibuses connect neighborhoods within cities and towns across Ethiopia. Most affordable option for local travel alongside locals.</p>
+          <button onclick="notify('Minibus taxis: Tell the conductor your destination when boarding.')">Learn More</button>
+        </div>
+        <div class="transport-card">
+          <i class="fa fa-road"></i>
+          <h3>Inter-City Buses</h3>
+          <p>Selam Bus and SKY Bus offer comfortable long-distance bus services connecting all major Ethiopian cities including Bahir Dar, Gondar, Hawassa, and Mekelle.</p>
+          <a href="https://www.selambus.com" target="_blank">Selam Bus</a>
+        </div>
+      </div>
+    </div>
+    <div class="transport-panel" id="tab-ride">
+      <div class="transport-cards">
+        <div class="transport-card">
+          <i class="fa fa-mobile-alt"></i>
+          <h3>Ride App</h3>
+          <p>Ethiopia's leading ride-hailing app, operating in Addis Ababa. Safe, affordable, and cashless rides available 24/7 with GPS tracking and driver ratings.</p>
+          <a href="https://www.rideapp.com" target="_blank">Download Ride App</a>
+        </div>
+        <div class="transport-card">
+          <i class="fa fa-car"></i>
+          <h3>inDriver Ethiopia</h3>
+          <p>Popular ride-hailing platform where passengers can negotiate their fare directly with drivers. Available in Addis Ababa and expanding to other cities.</p>
+          <a href="https://indriver.com" target="_blank">Use inDriver</a>
+        </div>
+        <div class="transport-card">
+          <i class="fa fa-bicycle"></i>
+          <h3>Bajaj (Auto Rickshaw)</h3>
+          <p>Three-wheeled bajaj tuk-tuks are ubiquitous in secondary cities and towns. An authentic local experience for short distances at very affordable prices.</p>
+          <button onclick="notify('Bajaj rides: Negotiate price before boarding. Typical fare: 20-50 ETB.')">More Info</button>
+        </div>
+        <div class="transport-card">
+          <i class="fa fa-train"></i>
+          <h3>Addis–Djibouti Railway</h3>
+          <p>The modern electric railway connects Addis Ababa to Djibouti port through spectacular Afar landscapes. An engineering marvel opened in 2017.</p>
+          <a href="https://www.edi-railway.net" target="_blank">Train Info</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOTELS -->
+<section id="hotels" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-eyebrow">Stay in Style</span>
+      <h2 class="section-title">Ethiopian Hotels</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="hotel-grid">
+      <div class="hotel-card fade-in">
+        <img class="hotel-img" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80" alt="Sheraton Addis">
+        <div class="hotel-body">
+          <div class="hotel-stars">★★★★★</div>
+          <h3>Sheraton Addis</h3>
+          <div class="hotel-city">Addis Ababa</div>
+          <p>Ethiopia's most iconic 5-star luxury hotel, set in lush gardens with pools, world-class restaurants, spa, and panoramic city views. The address of choice for heads of state.</p>
+          <a href="https://www.marriott.com/en-us/hotels/addsi-sheraton-addis-a-luxury-collection-hotel-addis-ababa" target="_blank" class="hotel-book">Book Now</a>
+        </div>
+      </div>
+      <div class="hotel-card fade-in">
+        <img class="hotel-img" src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&q=80" alt="Hyatt Regency">
+        <div class="hotel-body">
+          <div class="hotel-stars">★★★★★</div>
+          <h3>Hyatt Regency Addis Ababa</h3>
+          <div class="hotel-city">Addis Ababa</div>
+          <p>Modern luxury in the heart of the diplomatic district. Features rooftop bar, infinity pool, conference facilities, and five dining venues offering Ethiopian and international cuisine.</p>
+          <a href="https://www.hyatt.com/en-US/hotel/ethiopia/hyatt-regency-addis-ababa/addrg" target="_blank" class="hotel-book">Book Now</a>
+        </div>
+      </div>
+      <div class="hotel-card fade-in">
+        <img class="hotel-img" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" alt="Radisson Blu">
+        <div class="hotel-body">
+          <div class="hotel-stars">★★★★★</div>
+          <h3>Radisson Blu Hotel</h3>
+          <div class="hotel-city">Addis Ababa</div>
+          <p>Contemporary 5-star hotel in the business district. Known for its award-winning restaurant, rooftop terrace, fitness center, and seamless connectivity for business travelers.</p>
+          <a href="https://www.radissonhotels.com/en-us/hotels/radisson-blu-addis-ababa" target="_blank" class="hotel-book">Book Now</a>
+        </div>
+      </div>
+      <div class="hotel-card fade-in">
+        <img class="hotel-img" src="https://images.unsplash.com/photo-1590073242678-70ee3fc28e8e?w=600&q=80" alt="Lalibela Lodge">
+        <div class="hotel-body">
+          <div class="hotel-stars">★★★★</div>
+          <h3>Maribela Hotel Lalibela</h3>
+          <div class="hotel-city">Lalibela</div>
+          <p>Perched above the ancient churches with breathtaking views. Traditional tukul-style cottages, authentic Ethiopian cuisine, and expert guides to the rock-hewn churches.</p>
+          <a href="https://www.booking.com/hotel/et/maribela.html" target="_blank" class="hotel-book">Book Now</a>
+        </div>
+      </div>
+      <div class="hotel-card fade-in">
+        <img class="hotel-img" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80" alt="Gondar Lodge">
+        <div class="hotel-body">
+          <div class="hotel-stars">★★★★</div>
+          <h3>Goha Hotel Gondar</h3>
+          <div class="hotel-city">Gondar</div>
+          <p>Hillside hotel overlooking the Royal Enclosure. Tiered gardens with stunning views of medieval castles, outdoor pool, and the best vantage point for the Timkat festival.</p>
+          <a href="https://www.booking.com/hotel/et/goha.html" target="_blank" class="hotel-book">Book Now</a>
+        </div>
+      </div>
+      <div class="hotel-card fade-in">
+        <img class="hotel-img" src="https://images.unsplash.com/photo-1455587734955-081b22074882?w=600&q=80" alt="Kuriftu Resort">
+        <div class="hotel-body">
+          <div class="hotel-stars">★★★★★</div>
+          <h3>Kuriftu Resort & Spa</h3>
+          <div class="hotel-city">Bishoftu</div>
+          <p>Ethiopia's premier lakeside resort on the shores of Lake Bishoftu. Stunning overwater villas, full-service spa, water sports, and some of the most romantic sunsets in Africa.</p>
+          <a href="https://www.kurifturesort.com" target="_blank" class="hotel-book">Book Now</a>
+        </div>
+      </div>
+      <div class="hotel-card fade-in">
+        <img class="hotel-img" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=80" alt="Simien Lodge">
+        <div class="hotel-body">
+          <div class="hotel-stars">★★★★</div>
+          <h3>Limalimo Lodge Simien</h3>
+          <div class="hotel-city">Simien Mountains</div>
+          <p>Africa's highest lodge at 3,600m, cantilevered over a dramatic cliff edge with views of the Simien escarpment. Solar-powered eco-lodge within the national park.</p>
+          <a href="https://limalimolodge.com" target="_blank" class="hotel-book">Book Now</a>
+        </div>
+      </div>
+      <div class="hotel-card fade-in">
+        <img class="hotel-img" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80" alt="Harar Hotel">
+        <div class="hotel-body">
+          <div class="hotel-stars">★★★</div>
+          <h3>Ras Hotel Harar</h3>
+          <div class="hotel-city">Harar</div>
+          <p>Historic hotel located just outside the ancient Jugol walls. Colonial-era charm, rooftop terrace with old city views, and ideal base for exploring the hyena feeding ceremony.</p>
+          <a href="https://www.booking.com/hotel/et/ras-harar.html" target="_blank" class="hotel-book">Book Now</a>
+        </div>
+      </div>
+      <div class="hotel-card fade-in">
+        <img class="hotel-img" src="https://images.unsplash.com/photo-1568084680786-a84f91d1153c?w=600&q=80" alt="Hawassa Hotel">
+        <div class="hotel-body">
+          <div class="hotel-stars">★★★★</div>
+          <h3>Lewi Resort Hawassa</h3>
+          <div class="hotel-city">Hawassa</div>
+          <p>Lakeside resort on the shores of Hawassa Lake in the Rift Valley. Famous for the nearby fish market, pelicans, and flamingos. Ideal stopover on the southern circuit.</p>
+          <a href="https://www.booking.com/hotel/et/lewi-resort-hawassa.html" target="_blank" class="hotel-book">Book Now</a>
+        </div>
+      </div>
+      <div class="hotel-card fade-in">
+        <img class="hotel-img" src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80" alt="Entoto Lodge">
+        <div class="hotel-body">
+          <div class="hotel-stars">★★★★</div>
+          <h3>Entoto Natural Park Lodge</h3>
+          <div class="hotel-city">Addis Ababa</div>
+          <p>Eco-retreat in the forested Entoto hills above Addis Ababa. Cool mountain air, eucalyptus forest, horse riding, and sweeping views over the capital city spread below.</p>
+          <a href="https://www.booking.com/hotel/et/entoto-natural-park.html" target="_blank" class="hotel-book">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="map-section" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-eyebrow">Navigate Ethiopia</span>
+      <h2 class="section-title" style="color:#F5EDD6;">Interactive Map</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="map-container fade-in">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7820826.453986295!2d34.04788!3d9.145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cef5ab402d%3A0x8467b6b037a24d49!2sEthiopia!5e1!3m2!1sen!2set!4v1700000000000!5m2!1sen!2set"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div class="map-pins fade-in">
+      <div class="map-pin" onclick="openMapLocation('Addis Ababa Ethiopia')"><i class="fa fa-map-pin"></i> Addis Ababa</div>
+      <div class="map-pin" onclick="openMapLocation('Lalibela Ethiopia')"><i class="fa fa-map-pin"></i> Lalibela</div>
+      <div class="map-pin" onclick="openMapLocation('Axum Ethiopia')"><i class="fa fa-map-pin"></i> Axum</div>
+      <div class="map-pin" onclick="openMapLocation('Simien Mountains Ethiopia')"><i class="fa fa-map-pin"></i> Simien Mtns</div>
+      <div class="map-pin" onclick="openMapLocation('Gondar Ethiopia')"><i class="fa fa-map-pin"></i> Gondar</div>
+      <div class="map-pin" onclick="openMapLocation('Harar Ethiopia')"><i class="fa fa-map-pin"></i> Harar</div>
+      <div class="map-pin" onclick="openMapLocation('Danakil Depression Ethiopia')"><i class="fa fa-map-pin"></i> Danakil</div>
+      <div class="map-pin" onclick="openMapLocation('Lake Tana Ethiopia')"><i class="fa fa-map-pin"></i> Lake Tana</div>
+      <div class="map-pin" onclick="openMapLocation('Omo Valley Ethiopia')"><i class="fa fa-map-pin"></i> Omo Valley</div>
+      <div class="map-pin" onclick="openMapLocation('Bale Mountains Ethiopia')"><i class="fa fa-map-pin"></i> Bale Mtns</div>
+      <div class="map-pin" onclick="openMapLocation('Hawassa Ethiopia')"><i class="fa fa-map-pin"></i> Hawassa</div>
+      <div class="map-pin" onclick="openMapLocation('Dire Dawa Ethiopia')"><i class="fa fa-map-pin"></i> Dire Dawa</div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-eyebrow">Culture & Celebration</span>
+      <h2 class="section-title">Events & Celebrities</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="events-grid">
+      <div class="event-card fade-in">
+        <div class="event-date"><span class="month">JAN</span><span class="day">7</span></div>
+        <div class="event-body">
+          <h3>Ethiopian Christmas (Genna)</h3>
+          <p>Ethiopia follows the ancient Julian calendar, celebrating Christmas on January 7th. Lalibela's rock churches host the most spectacular Genna ceremonies with all-night chanting and processions.</p>
+          <span class="event-tag">Religious</span>
+        </div>
+      </div>
+      <div class="event-card fade-in">
+        <div class="event-date"><span class="month">JAN</span><span class="day">19</span></div>
+        <div class="event-body">
+          <h3>Timkat – Ethiopian Epiphany</h3>
+          <p>The most colorful Orthodox festival in Africa. The Ark replicas (Tabots) are paraded through streets, clergy in dazzling vestments, and thousands of pilgrims in white robes at dawn baptism ceremonies.</p>
+          <span class="event-tag">UNESCO Intangible Heritage</span>
+        </div>
+      </div>
+      <div class="event-card fade-in">
+        <div class="event-date"><span class="month">SEP</span><span class="day">11</span></div>
+        <div class="event-body">
+          <h3>Enkutatash – Ethiopian New Year</h3>
+          <p>Ethiopia's New Year celebration (Enkutatash) falls in September with the end of the rainy season. Children gift yellow daisies, bonfires blaze, and communities celebrate with songs and feasting.</p>
+          <span class="event-tag">National Holiday</span>
+        </div>
+      </div>
+      <div class="event-card fade-in">
+        <div class="event-date"><span class="month">SEP</span><span class="day">27</span></div>
+        <div class="event-body">
+          <h3>Meskel – Finding of the True Cross</h3>
+          <p>Huge bonfires (Demera) are built and set alight in town squares nationwide. In Addis Ababa, Meskel Square hosts a ceremony with 50,000+ participants. Now a UNESCO Intangible Heritage.</p>
+          <span class="event-tag">UNESCO Intangible Heritage</span>
+        </div>
+      </div>
+      <div class="event-card fade-in">
+        <div class="event-date"><span class="month">MAR</span><span class="day">2</span></div>
+        <div class="event-body">
+          <h3>Adwa Victory Day</h3>
+          <p>Celebration of the historic 1896 Battle of Adwa, where Ethiopian forces defeated Italy. Marked by parades, cultural performances, and patriotic festivities nationwide. Pan-African significance.</p>
+          <span class="event-tag">National Day</span>
+        </div>
+      </div>
+      <div class="event-card fade-in">
+        <div class="event-date"><span class="month">OCT</span><span class="day">Varies</span></div>
+        <div class="event-body">
+          <h3>Irreecha – Oromo Thanksgiving</h3>
+          <p>The largest cultural gathering in East Africa, held at Lake Hora in Bishoftu. Over 5 million Oromo celebrate the harvest thanksgiving with traditional attire, songs, prayers, and offerings.</p>
+          <span class="event-tag">Cultural Festival</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Celebrities -->
+    <div style="margin-top:3rem;">
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;text-align:center;margin-bottom:0.5rem;">Notable Ethiopian Celebrities</h3>
+      <p style="text-align:center;color:var(--text-light);margin-bottom:2rem;font-size:0.95rem;">Icons who made Ethiopia proud on the world stage</p>
+      <div class="celeb-grid">
+        <div class="celeb-card fade-in">
+          <img class="celeb-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Haile_gebreselassie_berlin_2007.jpg/220px-Haile_gebreselassie_berlin_2007.jpg" alt="Haile Gebrselassie" onerror="this.src='https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=200&q=80'">
+          <h4>Haile Gebrselassie</h4>
+          <span>Marathon Legend</span>
+        </div>
+        <div class="celeb-card fade-in">
+          <img class="celeb-img" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=200&q=80" alt="Teddy Afro">
+          <h4>Teddy Afro</h4>
+          <span>Music Icon</span>
+        </div>
+        <div class="celeb-card fade-in">
+          <img class="celeb-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Abiy Ahmed">
+          <h4>Abiy Ahmed Ali</h4>
+          <span>Nobel Peace Prize 2019</span>
+        </div>
+        <div class="celeb-card fade-in">
+          <img class="celeb-img" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&q=80" alt="Tigist Assefa">
+          <h4>Tigist Assefa</h4>
+          <span>World Marathon Record</span>
+        </div>
+        <div class="celeb-card fade-in">
+          <img class="celeb-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" alt="Kenenisa Bekele">
+          <h4>Kenenisa Bekele</h4>
+          <span>Olympic Champion</span>
+        </div>
+        <div class="celeb-card fade-in">
+          <img class="celeb-img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80" alt="Aster Aweke">
+          <h4>Aster Aweke</h4>
+          <span>Queen of Ethiopian Music</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-eyebrow" style="color:var(--gold-light)">Get In Touch</span>
+      <h2 class="section-title" style="color:#F5EDD6;">Contact Us</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid fade-in">
+      <div class="contact-info">
+        <h3>Ethio Tour Headquarters</h3>
+        <div class="contact-item">
+          <i class="fa fa-map-marker-alt"></i>
+          <div><strong>Address</strong>Bole Road, Kirkos Sub-City<br>Addis Ababa, Ethiopia</div>
+        </div>
+        <div class="contact-item">
+          <i class="fa fa-phone"></i>
+          <div><strong>Phone</strong>+251 11 551 7777<br>+251 91 123 4567 (Mobile)</div>
+        </div>
+        <div class="contact-item">
+          <i class="fa fa-envelope"></i>
+          <div><strong>Email</strong>info@ethiotour.et<br>bookings@ethiotour.et</div>
+        </div>
+        <div class="contact-item">
+          <i class="fa fa-clock"></i>
+          <div><strong>Working Hours</strong>Mon – Fri: 8:00 AM – 6:00 PM<br>Sat: 9:00 AM – 3:00 PM (EAT)</div>
+        </div>
+        <div class="contact-item">
+          <i class="fa fa-globe"></i>
+          <div><strong>Website</strong>www.ethiotour.et</div>
+        </div>
+        <div class="social-links">
+          <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com" target="_blank" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://t.me" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://wa.me/251911234567" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://tiktok.com" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#F5EDD6;margin-bottom:1.5rem;">Send a Message</h3>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="cName" placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="cEmail" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" id="cSubject" placeholder="How can we help?">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea id="cMessage" placeholder="Write your message here..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="sendContact()">
+          <i class="fa fa-paper-plane"></i> Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ETHIO TOUR</div>
+  <p style="margin-bottom:0.5rem;color:#444;">Discover the Land of Origin Ethiopia</p>
+  <p>© 2024 Ethio Tour. All rights reserved. | <a href="#contact">Contact</a> | <a href="registration.html" target="_blank">Register</a></p>
+  <p style="margin-top:0.8rem;color:var(--gold);">Created by <strong>Abrham Kefyalew</strong></p>
+</footer>
+
+<!-- BACK TO TOP -->
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa fa-arrow-up"></i></button>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLogin()"><i class="fa fa-times"></i></button>
+    <div class="modal-tabs">
+      <button class="modal-tab active" onclick="switchTab('login')">Sign In</button>
+      <button class="modal-tab" onclick="switchTab('signup')">Create Account</button>
+    </div>
+    <div class="modal-form active" id="form-login">
+      <h2>Welcome Back</h2>
+      <div class="mform-group">
+        <label>Email Address</label>
+        <input type="email" id="lEmail" placeholder="your@email.com">
+      </div>
+      <div class="mform-group">
+        <label>Password</label>
+        <input type="password" id="lPass" placeholder="Enter your password">
+      </div>
+      <div style="text-align:right;margin-bottom:1.2rem;">
+        <a href="#" style="font-family:'Josefin Sans',sans-serif;font-size:0.7rem;color:var(--gold);text-decoration:none;">Forgot Password?</a>
+      </div>
+      <button class="btn-primary" style="width:100%;justify-content:center;" onclick="doLogin()">
+        <i class="fa fa-sign-in-alt"></i> Sign In
+      </button>
+      <div style="margin-top:1.2rem;text-align:center;font-family:'Josefin Sans',sans-serif;font-size:0.72rem;color:var(--text-light);">
+        Or continue with:&nbsp;
+        <a href="#" onclick="notify('Google login coming soon');return false;" style="color:var(--gold);">Google</a> &nbsp;|&nbsp;
+        <a href="#" onclick="notify('Facebook login coming soon');return false;" style="color:var(--gold);">Facebook</a>
+      </div>
+    </div>
+    <div class="modal-form" id="form-signup">
+      <h2>Create Account</h2>
+      <div class="mform-group">
+        <label>Full Name</label>
+        <input type="text" id="sName" placeholder="Your full name">
+      </div>
+      <div class="mform-group">
+        <label>Email Address</label>
+        <input type="email" id="sEmail" placeholder="your@email.com">
+      </div>
+      <div class="mform-group">
+        <label>Phone Number</label>
+        <input type="tel" id="sPhone" placeholder="+251 9x xxx xxxx">
+      </div>
+      <div class="mform-group">
+        <label>Password</label>
+        <input type="password" id="sPass" placeholder="Create a strong password">
+      </div>
+      <div class="mform-group">
+        <label>Confirm Password</label>
+        <input type="password" id="sPass2" placeholder="Repeat password">
+      </div>
+      <button class="btn-primary" style="width:100%;justify-content:center;" onclick="doSignup()">
+        <i class="fa fa-user-plus"></i> Create Account
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── DARK MODE ──
+let isDark = localStorage.getItem('dark') === 'true';
+applyDark();
+function applyDark(){
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : '');
+  document.getElementById('darkToggle').innerHTML = isDark ? '<i class="fa fa-sun"></i>' : '<i class="fa fa-moon"></i>';
+}
+function toggleDark(){ isDark = !isDark; localStorage.setItem('dark',isDark); applyDark(); }
+
+// ── LANGUAGE ──
+const translations = {
+  en: { title:'Ethio Tour – Welcome to Ethiopia', slogan:'Discover the Land of Origin Ethiopia', startBtn:'Start Journey' },
+  am: { title:'ኢትዮ ቱር – እንኳን ወደ ኢትዮጵያ ተጋብዘዋል', slogan:'የሰው ዘር መናፈሻ ኢትዮጵያን ያስሱ', startBtn:'ጉዞ ጀምር' },
+  fr: { title:'Ethio Tour – Bienvenue en Éthiopie', slogan:'Découvrez la Terre d\'Origine Éthiopie', startBtn:'Commencer' },
+  ar: { title:'إيثيو تور – مرحباً بك في إثيوبيا', slogan:'اكتشف أرض الأصل إثيوبيا', startBtn:'ابدأ الرحلة' },
+  zh: { title:'埃塞俄比亚之旅 – 欢迎来到埃塞俄比亚', slogan:'探索人类起源之地埃塞俄比亚', startBtn:'开始旅程' },
+  de: { title:'Ethio Tour – Willkommen in Äthiopien', slogan:'Entdecken Sie das Ursprungsland Äthiopien', startBtn:'Reise beginnen' }
+};
+function toggleLang(){ document.getElementById('langMenu').classList.toggle('open'); }
+function setLang(code, label){
+  document.getElementById('langBtn').textContent = '🌍 ' + label;
+  document.getElementById('langMenu').classList.remove('open');
+  const t = translations[code];
+  if(!t) return;
+  document.querySelector('.hero-title').innerHTML = t.title.replace('–','–<br>').replace('Ethiopia','<em>Ethiopia</em>');
+  document.querySelector('.hero-slogan').textContent = t.slogan;
+  notify('Language changed to: ' + label);
+}
+document.addEventListener('click', e => {
+  if(!e.target.closest('.lang-dropdown')) document.getElementById('langMenu').classList.remove('open');
+});
+
+// ── NAVBAR ──
+function toggleNav(){ document.getElementById('navLinks').classList.toggle('open'); }
+window.addEventListener('scroll',()=>{
+  const bt = document.getElementById('backTop');
+  bt.classList.toggle('show', window.scrollY > 400);
+  document.getElementById('navbar').style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.4)' : '';
+});
+
+// ── TRANSPORT TABS ──
+function showTab(name){
+  document.querySelectorAll('.transport-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  event.target.closest('.tab-btn').classList.add('active');
+}
+
+// ── MAP ──
+function openMapLocation(q){
+  window.open('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q),'_blank');
+}
+
+// ── LOGIN ──
+function openLogin(){ document.getElementById('loginModal').classList.add('open'); }
+function closeLogin(){ document.getElementById('loginModal').classList.remove('open'); }
+function switchTab(tab){
+  document.querySelectorAll('.modal-tab').forEach((t,i)=>t.classList.toggle('active',i==(tab==='login'?0:1)));
+  document.getElementById('form-login').classList.toggle('active', tab==='login');
+  document.getElementById('form-signup').classList.toggle('active', tab==='signup');
+}
+function doLogin(){
+  const e = document.getElementById('lEmail').value, p = document.getElementById('lPass').value;
+  if(!e||!p){ notify('Please fill in all fields.','#8B1A1A'); return; }
+  closeLogin(); notify('Welcome back! Login successful. ✓');
+}
+function doSignup(){
+  const n=document.getElementById('sName').value, e=document.getElementById('sEmail').value,
+        p=document.getElementById('sPass').value, p2=document.getElementById('sPass2').value;
+  if(!n||!e||!p){ notify('Please fill in all fields.','#8B1A1A'); return; }
+  if(p!==p2){ notify('Passwords do not match.','#8B1A1A'); return; }
+  closeLogin(); notify('Account created successfully! Welcome to Ethio Tour. ✓');
+}
+document.getElementById('loginModal').addEventListener('click',e=>{ if(e.target===e.currentTarget) closeLogin(); });
+
+// ── CONTACT ──
+function sendContact(){
+  const n=document.getElementById('cName').value, e=document.getElementById('cEmail').value,
+        s=document.getElementById('cSubject').value, m=document.getElementById('cMessage').value;
+  if(!n||!e||!m){ notify('Please fill in required fields.','#8B1A1A'); return; }
+  notify('Message sent! We will contact you within 24 hours. ✓');
+  document.getElementById('cName').value='';document.getElementById('cEmail').value='';
+  document.getElementById('cSubject').value='';document.getElementById('cMessage').value='';
+}
+
+// ── NOTIFICATION ──
+function notify(msg, bg=''){
+  const n = document.getElementById('notif');
+  n.textContent = msg;
+  n.style.background = bg || 'var(--green)';
+  n.classList.add('show');
+  setTimeout(()=>n.classList.remove('show'), 3500);
+}
+
+// ── FADE-IN OBSERVER ──
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

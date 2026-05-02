@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETHIO TOUR | Explore Ethiopia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2d5a27;
+            --gold: #e5b13a;
+            --red: #bb2b2b;
+            --dark: #1a1a1a;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #f4f7f6; color: #333; scroll-behavior: smooth; }
+
+        /* Navigation */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 5%; background: white; position: fixed; width: 100%; top: 0; z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .nav-links { list-style: none; display: flex; gap: 15px; }
+        .nav-links a { text-decoration: none; color: #333; font-size: 0.8rem; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .login-btn { background: var(--primary); color: white !important; padding: 8px 20px; border-radius: 5px; cursor: pointer; }
+
+        /* Hero */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
+        }
+        .hero h1 { font-size: 4rem; margin-bottom: 10px; }
+
+        /* Sections */
+        section { padding: 80px 5%; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.5rem; color: var(--primary); }
+        .underline { width: 60px; height: 4px; background: var(--gold); margin: 10px auto; }
+
+        /* Grids */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        
+        /* Card Styling */
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); transition: 0.3s; position: relative; }
+        .card:hover { transform: translateY(-10px); }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        .card-body { padding: 20px; }
+        .card-body h3 { margin-bottom: 10px; font-size: 1.2rem; }
+        .card-body p { font-size: 0.9rem; color: #666; margin-bottom: 20px; height: 60px; overflow: hidden; }
+        
+        /* Buttons */
+        .btn { 
+            display: inline-block; padding: 10px 20px; border: none; border-radius: 5px; 
+            cursor: pointer; font-weight: 600; text-decoration: none; transition: 0.3s; text-align: center;
+        }
+        .btn-visit { background: var(--gold); color: white; width: 100%; }
+        .btn-book { background: var(--primary); color: white; width: 100%; }
+
+        /* Stars */
+        .stars { color: #f1c40f; margin-bottom: 10px; }
+
+        /* Transportation */
+        .trans-box { background: white; padding: 30px; border-radius: 15px; text-align: center; box-shadow: var(--shadow); }
+        .trans-box i { font-size: 3rem; color: var(--primary); margin-bottom: 15px; }
+
+        /* Culture/Event/Celebrity Grid */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .info-card { background: #fff; padding: 25px; border-radius: 15px; border-left: 5px solid var(--gold); }
+        .info-card h4 { color: var(--red); margin-bottom: 10px; }
+
+        /* Modal */
+        .modal {
+            display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); justify-content: center; align-items: center;
+        }
+        .modal-content { background: white; padding: 40px; border-radius: 15px; width: 100%; max-width: 400px; text-align: center; }
+        .input-group { margin-bottom: 15px; text-align: left; }
+        .input-group input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; }
+
+        footer { background: var(--dark); color: white; padding: 40px; text-align: center; }
+
+        @media (max-width: 768px) { .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">ETHIO TOUR</div>
+        <ul class="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#destination">DESTINATION</a></li>
+            <li><a href="#transport">TRANSPORT</a></li>
+            <li><a href="#hotel">HOTEL</a></li>
+            <li><a href="#culture">CULTURE & EVENTS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+            <li><a onclick="toggleModal('loginModal')" class="login-btn">LOGIN</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" id="home">
+        <h1>ETHIO TOUR</h1>
+        <p>Land of Origins - 10 Epic Destinations, 10 Luxury Hotels</p>
+    </header>
+
+    <section id="destination">
+        <div class="section-title">
+            <h2>Top 10 Destinations</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="grid" id="dest-grid">
+            </div>
+    </section>
+
+    <section id="transport" style="background: #e9ecef;">
+        <div class="section-title">
+            <h2>Transportation Services</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="grid">
+            <div class="trans-box">
+                <i class="fas fa-plane"></i>
+                <h3>Airplane</h3>
+                <p>Domestic flights to all major historic routes via Ethiopian Airlines.</p>
+                <button class="btn btn-visit" onclick="action('Flight Search')">Check Flights</button>
+            </div>
+            <div class="trans-box">
+                <i class="fas fa-taxi"></i>
+                <h3>Yellow Taxi</h3>
+                <p>Traditional metered taxi services available throughout Addis Ababa.</p>
+                <button class="btn btn-visit" onclick="action('Taxi Booking')">Call Taxi</button>
+            </div>
+            <div class="trans-box">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Ride / Feres</h3>
+                <p>Popular e-hailing apps for safe and affordable city travel.</p>
+                <button class="btn btn-visit" onclick="action('Ride App')">Open App</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="hotel">
+        <div class="section-title">
+            <h2>Luxury Hotels</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="grid" id="hotel-grid">
+            </div>
+    </section>
+
+    <section id="culture" style="background: #fff;">
+        <div class="section-title">
+            <h2>Culture, Events & Celebrities</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="info-grid">
+            <div class="info-card">
+                <h4><i class="fas fa-star"></i> Celebrities</h4>
+                <p><b>Abebe Bikila:</b> The first African to win Olympic gold (marathon).</p>
+                <p><b>Haile Selassie I:</b> The defining Emperor of modern Ethiopia.</p>
+                <p><b>Derartu Tulu:</b> Trailblazing female long-distance champion.</p>
+            </div>
+            <div class="info-card">
+                <h4><i class="fas fa-coffee"></i> Cultures</h4>
+                <p><b>Coffee Ceremony:</b> A social ritual of roasting and brewing.</p>
+                <p><b>Eskista:</b> Traditional shoulder-dancing unique to Ethiopia.</p>
+                <p><b>Injera:</b> The staple sourdough flatbread shared in 'Agelgil'.</p>
+            </div>
+            <div class="info-card">
+                <h4><i class="fas fa-calendar-check"></i> Events</h4>
+                <p><b>Timkat:</b> The Epiphany celebration with colorful processions.</p>
+                <p><b>Meskel:</b> The finding of the True Cross with giant bonfires.</p>
+                <p><b>Enkutatash:</b> The vibrant Ethiopian New Year in September.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2 style="margin-bottom: 20px;">User Login</h2>
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" id="user" placeholder="Enter username">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="pass" placeholder="Enter password">
+            </div>
+            <button class="btn btn-book" onclick="handleLogin()">Login</button>
+            <button class="btn" onclick="toggleModal('loginModal')" style="margin-top:10px;">Close</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ETHIO TOUR - Designed for Professional Tourism</p>
+    </footer>
+
+    <script>
+        // Data for 10 Destinations
+        const destinations = [
+            { name: "Lalibela", img: "https://images.unsplash.com/photo-1616428383321-4f76ca02484c?w=400", desc: "12th-century rock-hewn churches." },
+            { name: "Simien Mountains", img: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400", desc: "Stunning peaks and Gelada baboons." },
+            { name: "Aksum", img: "https://images.unsplash.com/photo-1581512411985-797305949141?w=400", desc: "Ancient obelisks and history." },
+            { name: "Danakil Depression", img: "https://images.unsplash.com/photo-1596390314281-1250689b6579?w=400", desc: "The hottest place on earth." },
+            { name: "Bale Mountains", img: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400", desc: "Home of the Ethiopian Wolf." },
+            { name: "Omo Valley", img: "https://images.unsplash.com/photo-1563214532-68393e843e99?w=400", desc: "Rich cultural tribal diversity." },
+            { name: "Gondar", img: "https://images.unsplash.com/photo-1563214532-68393e843e99?w=400", desc: "The Camelot of Africa (Castles)." },
+            { name: "Harar Jugol", img: "https://images.unsplash.com/photo-1563214532-68393e843e99?w=400", desc: "Ancient walled city of 100 mosques." },
+            { name: "Blue Nile Falls", img: "https://images.unsplash.com/photo-1581512411985-797305949141?w=400", desc: "Majestic Tis Abay waterfall." },
+            { name: "Tiya Stones", img: "https://images.unsplash.com/photo-1581512411985-797305949141?w=400", desc: "UNESCO World Heritage megaliths." }
+        ];
+
+        // Data for 10 Hotels
+        const hotels = [
+            { name: "Sheraton Addis", rating: 5, img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400" },
+            { name: "Skylight Hotel", rating: 5, img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400" },
+            { name: "Hilton Addis", rating: 4, img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400" },
+            { name: "Hyatt Regency", rating: 5, img: "https://images.unsplash.com/photo-1551882547-ff43c63fedfe?w=400" },
+            { name: "Kuriftu Resort", rating: 4, img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400" },
+            { name: "Haile Resort", rating: 4, img: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400" },
+            { name: "Golden Tulip", rating: 4, img: "https://images.unsplash.com/photo-1582719478250-c89cae4df85b?w=400" },
+            { name: "Radisson Blu", rating: 5, img: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=400" },
+            { name: "Jupiter Hotel", rating: 4, img: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=400" },
+            { name: "Elilly International", rating: 5, img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=400" }
+        ];
+
+        // Load Destinations
+        const destGrid = document.getElementById('dest-grid');
+        destinations.forEach(d => {
+            destGrid.innerHTML += `
+                <div class="card">
+                    <img src="${d.img}" alt="${d.name}">
+                    <div class="card-body">
+                        <h3>${d.name}</h3>
+                        <p>${d.desc}</p>
+                        <button class="btn btn-visit" onclick="action('Visiting ${d.name}')">VIST</button>
+                    </div>
+                </div>`;
+        });
+
+        // Load Hotels
+        const hotelGrid = document.getElementById('hotel-grid');
+        hotels.forEach(h => {
+            let stars = '⭐'.repeat(h.rating);
+            hotelGrid.innerHTML += `
+                <div class="card">
+                    <img src="${h.img}" alt="${h.name}">
+                    <div class="card-body">
+                        <h3>${h.name}</h3>
+                        <div class="stars">${stars}</div>
+                        <button class="btn btn-book" onclick="action('Booking at ${h.name}')">BOOK NOW</button>
+                    </div>
+                </div>`;
+        });
+
+        // Toggle Modal
+        function toggleModal(id) {
+            const m = document.getElementById(id);
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        // Handle Login Logic
+        function handleLogin() {
+            const u = document.getElementById('user').value;
+            const p = document.getElementById('pass').value;
+            if(u && p) {
+                alert("Welcome, " + u + "! You are now logged into ETHIO TOUR.");
+                toggleModal('loginModal');
+            } else {
+                alert("Please fill in both fields.");
+            }
+        }
+
+        // Generic Button Action
+        function action(msg) {
+            alert("Redirecting to " + msg + " service...");
+        }
+    </script>
+</body>
+</html>
+
